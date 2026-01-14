@@ -31,8 +31,11 @@ AI Marketer brings 5 proven marketing frameworks into your Claude Code workflow:
 ## Quick Start
 
 ```bash
-# Install the plugin
-claude plugins install ai-marketer
+# Navigate to the project folder containing the plugin
+cd /path/to/books_selling_ai_kochel
+
+# Start Claude Code (plugin auto-loads from .claude/plugins/)
+claude
 
 # Score any headline instantly
 /score "Your AI product headline here"

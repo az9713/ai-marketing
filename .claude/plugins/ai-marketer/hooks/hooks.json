@@ -1,0 +1,31 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tool": "Write",
+          "path": "**/README.md"
+        },
+        "description": "Auto-review README after generation",
+        "command": "echo '[AI-Marketer] README written - consider running /audit for quality check'"
+      },
+      {
+        "matcher": {
+          "tool": "Write",
+          "path": "**/*landing*.md"
+        },
+        "description": "Auto-review landing page content after generation",
+        "command": "echo '[AI-Marketer] Landing page content written - consider running /score on headlines'"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": {
+          "prompt": "(?i).*(readme|landing page|marketing|copy|headline|tagline).*"
+        },
+        "description": "Remind about marketing frameworks when relevant topics mentioned",
+        "command": "echo '[AI-Marketer] Marketing content detected. Available commands: /audit, /score, /readme, /compete, /voice'"
+      }
+    ]
+  }
+}

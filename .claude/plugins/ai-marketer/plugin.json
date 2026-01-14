@@ -1,0 +1,24 @@
+{
+  "name": "ai-marketer",
+  "version": "1.0.0",
+  "description": "AI Marketing Frameworks plugin implementing 5 proven marketing psychology books for promoting AI products",
+  "author": "Simon",
+  "license": "MIT",
+  "keywords": [
+    "marketing",
+    "copywriting",
+    "persuasion",
+    "ai-products",
+    "github-readme",
+    "landing-page",
+    "content-generation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "skills": "skills",
+  "agents": "agents",
+  "commands": "commands",
+  "hooks": "hooks/hooks.json"
+}

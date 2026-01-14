@@ -59,6 +59,8 @@ Score: 32/40
 
 **What You Learned**: Headlines should hit 4 emotional triggers: NEW (novel), EASY (low effort), SAFE (trustworthy), BIG (transformational).
 
+**Framework Used**: 📘 *Take Their Money* (Milligan) — NESB scoring for the 4 emotional triggers
+
 ---
 
 ### Use Case 2: Improve a Weak Headline (1 minute)
@@ -79,6 +81,8 @@ Can you give me 5 alternatives that score higher?
 3. "10x faster coding. Zero learning curve. Trusted by 50,000 devs." (35/40)
 
 **What You Learned**: Good headlines combine novelty, ease, trust, and big outcomes.
+
+**Framework Used**: 📘 *Take Their Money* (Milligan) — improving headlines by optimizing each NESB dimension
 
 ---
 
@@ -119,6 +123,8 @@ Top 3 Improvements:
 
 **What You Learned**: READMEs need more than features - they need proof and emotional triggers.
 
+**Frameworks Used**: 📘 *Take Their Money* (Milligan) — NESB scoring | 📘 *Influence* (Cialdini) — 7 Persuasion Levers audit
+
 ---
 
 ### Use Case 4: Compare Two Headlines (1 minute)
@@ -140,6 +146,8 @@ Then:
 **What You'll See**: Scores for each, making the winner clear.
 
 **What You Learned**: Loss aversion ("stop losing") often beats gain framing ("build faster").
+
+**Frameworks Used**: 📘 *Take Their Money* (Milligan) — NESB scoring | 📘 *Yes! 50 Ways* (Cialdini et al.) — loss aversion principle
 
 ---
 
@@ -167,6 +175,8 @@ Claude will ask you:
 - Comparison to alternatives
 
 **What You Learned**: Good READMEs lead with benefits, include proof, and make getting started easy.
+
+**Frameworks Used**: 📘 *Take Their Money* (Milligan) — NESB-optimized hero | 📘 *Influence* (Cialdini) — social proof sections | 📘 *Breakthrough Advertising* (Schwartz) — awareness-matched messaging
 
 ---
 
@@ -202,6 +212,8 @@ Your Opportunity:
 ```
 
 **What You Learned**: Competitive analysis reveals gaps you can exploit.
+
+**Frameworks Used**: 📘 *Take Their Money* (Milligan) — NESB scoring | 📘 *Breakthrough Advertising* (Schwartz) — market sophistication analysis | 📘 *Influence* (Cialdini) — identifying missing persuasion levers
 
 ---
 
@@ -250,6 +262,8 @@ When generating for this voice:
 
 **What You Learned**: Consistent voice makes your content feel authentic.
 
+**Framework Used**: 🔧 *Supporting Capability* — Voice extraction is not derived from the 5 marketing books. It's a meta-skill that ensures framework-optimized content still sounds like you, not generic AI.
+
 ---
 
 ### Use Case 8: Write a Tweet Thread (2 minutes)
@@ -295,6 +309,8 @@ What would you build with this?
 
 **What You Learned**: Good threads hook with a story, agitate the problem, and end with proof + CTA.
 
+**Frameworks Used**: 📘 *Influence* (Cialdini) — social proof in testimonials | 📘 *Yes! 50 Ways* (Cialdini et al.) — storytelling hook | 📘 *One Sentence Persuasion* (Warren) — tribe-building through shared struggle
+
 ---
 
 ### Use Case 9: Rewrite with Loss Aversion (1 minute)
@@ -323,6 +339,8 @@ Why it's stronger:
 ```
 
 **What You Learned**: "Stop losing X" beats "Gain X" almost every time.
+
+**Framework Used**: 📘 *Yes! 50 Ways to Be Persuasive* (Cialdini et al.) — loss aversion is one of the 50 evidence-based persuasion tactics
 
 ---
 
@@ -356,6 +374,8 @@ Each should score at least 25/40 on NESB.
 ```
 
 **What You Learned**: Good taglines combine proof, ease, and big outcomes in few words.
+
+**Frameworks Used**: 📘 *Take Their Money* (Milligan) — NESB scoring (25/40 minimum target) | 📘 *Influence* (Cialdini) — Unity and Liking levers in tribal messaging
 
 ---
 

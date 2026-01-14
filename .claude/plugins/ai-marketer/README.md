@@ -32,7 +32,7 @@ AI Marketer brings 5 proven marketing frameworks into your Claude Code workflow:
 
 ```bash
 # Navigate to the project folder containing the plugin
-cd /path/to/books_selling_ai_kochel
+cd /path/to/ai-marketing
 
 # Start Claude Code (plugin auto-loads from .claude/plugins/)
 claude

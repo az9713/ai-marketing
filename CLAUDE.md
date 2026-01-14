@@ -7,7 +7,7 @@ AI Marketer is a Claude Code plugin that helps developers write better marketing
 ## Project Structure
 
 ```
-books_selling_ai_kochel/
+ai-marketing/
 ├── CLAUDE.md                          # This file - project context
 ├── docs/                              # Documentation
 │   ├── gemini3_summary.txt            # Original framework summary

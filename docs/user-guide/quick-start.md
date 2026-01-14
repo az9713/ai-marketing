@@ -18,7 +18,7 @@ The AI Marketer plugin is included in this project. To use it:
 # Step 1: Open your terminal (Command Prompt on Windows, Terminal on Mac/Linux)
 
 # Step 2: Navigate to this project folder
-cd /path/to/books_selling_ai_kochel
+cd /path/to/ai-marketing
 
 # Step 3: Start Claude Code
 claude

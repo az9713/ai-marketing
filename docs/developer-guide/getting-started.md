@@ -158,10 +158,10 @@ That's 90% of what you'll need.
 
 ```bash
 # Windows
-cd C:\Users\YourName\path\to\books_selling_ai_kochel
+cd C:\Users\YourName\path\to\ai-marketing
 
 # macOS/Linux
-cd /path/to/books_selling_ai_kochel
+cd /path/to/ai-marketing
 ```
 
 ### Step 2: Understand the Plugin Location
@@ -169,7 +169,7 @@ cd /path/to/books_selling_ai_kochel
 The plugin lives in a special folder:
 
 ```
-books_selling_ai_kochel/
+ai-marketing/
 ├── .claude/
 │   └── plugins/
 │       └── ai-marketer/      <-- The plugin folder

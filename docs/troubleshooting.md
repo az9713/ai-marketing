@@ -69,7 +69,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 3. Start Claude Code from the project root:
    ```bash
-   cd /path/to/books_selling_ai_kochel
+   cd /path/to/ai-marketing
    claude
    ```
 
@@ -88,7 +88,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 1. **Verify you're in the right directory**:
    ```bash
    pwd
-   # Should show path ending in books_selling_ai_kochel
+   # Should show path ending in ai-marketing
    ```
 
 2. **Check plugin structure**:
@@ -381,7 +381,7 @@ claude
 
 **Right**:
 ```bash
-cd /path/to/books_selling_ai_kochel
+cd /path/to/ai-marketing
 claude
 # Plugin loads correctly
 ```

@@ -51,8 +51,8 @@ Thank you for your interest in contributing to AI Marketer! This guide explains 
 ### Step 2: Clone Your Fork
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/books_selling_ai_kochel.git
-cd books_selling_ai_kochel
+git clone https://github.com/YOUR-USERNAME/ai-marketing.git
+cd ai-marketing
 ```
 
 ### Step 3: Create a Branch

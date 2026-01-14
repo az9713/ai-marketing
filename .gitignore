@@ -1,6 +1,9 @@
 # Ignore conversation context files
 .ignore/
 
+# Ignore source transcript files
+docs/*.txt
+
 # OS files
 .DS_Store
 Thumbs.db

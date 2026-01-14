@@ -7,27 +7,24 @@ Welcome! This guide will get you using AI Marketer in 5 minutes, with 10 hands-o
 ### What You Need
 
 1. **Claude Code** installed on your computer
-2. **The AI Marketer plugin** installed (see below)
+2. **This project** downloaded/cloned to your computer
 3. **A terminal/command prompt** open
 
-### Installing the Plugin
+### Using the Plugin
 
-If you haven't installed AI Marketer yet:
+The AI Marketer plugin is included in this project. To use it:
 
 ```bash
 # Step 1: Open your terminal (Command Prompt on Windows, Terminal on Mac/Linux)
 
-# Step 2: Navigate to your project folder
-cd /path/to/your/project
+# Step 2: Navigate to this project folder
+cd /path/to/books_selling_ai_kochel
 
 # Step 3: Start Claude Code
 claude
-
-# Step 4: Install the plugin (when Claude Code is running)
-/plugins install ai-marketer
 ```
 
-**What to expect**: You'll see a confirmation message that the plugin was installed successfully.
+**What to expect**: The plugin auto-loads because it's in the `.claude/plugins/` folder. Verify by asking Claude: "What marketing commands are available?"
 
 ---
 

@@ -8,24 +8,26 @@ This document provides detailed reference information for all AI Marketer comman
 
 | Command | Purpose | Input | Output |
 |---------|---------|-------|--------|
-| `/score` | Score headline/copy | Text | NESB score (0-40) |
-| `/audit` | Full marketing audit | URL or text | Full report (0-100) |
-| `/readme` | Generate README | Interactive | Markdown file |
-| `/compete` | Analyze competitor | URL | Competitive analysis |
-| `/voice` | Extract voice patterns | URL or text | Voice profile |
+| `score` | Score headline/copy | Text | NESB score (0-40) |
+| `audit` | Full marketing audit | URL or text | Full report (0-100) |
+| `readme` | Generate README | Interactive | Markdown file |
+| `compete` | Analyze competitor | URL | Competitive analysis |
+| `voice` | Extract voice patterns | URL or text | Voice profile |
 
 ---
 
-## `/score` - Headline Scoring
+## `score` - Headline Scoring
 
 ### Purpose
 Instantly score any headline, tagline, or piece of copy against the NESB framework (NEW, EASY, SAFE, BIG).
 
 ### Syntax
 ```
-/score <text>
-/score "<text with spaces>"
+score <text>
+score "<text with spaces>"
 ```
+
+Or with slash command (if plugin registered): `/ai-marketer:score <text>`
 
 ### Parameters
 | Parameter | Required | Description |
@@ -36,17 +38,17 @@ Instantly score any headline, tagline, or piece of copy against the NESB framewo
 
 **Example 1: Simple headline**
 ```
-/score AI-powered code completion
+score AI-powered code completion
 ```
 
 **Example 2: Complex headline (use quotes)**
 ```
-/score "Stop losing hours to debugging. Ship 3x faster with context-aware AI."
+score "Stop losing hours to debugging. Ship 3x faster with context-aware AI."
 ```
 
 **Example 3: Tagline**
 ```
-/score "Ship faster. Break nothing."
+score "Ship faster. Break nothing."
 ```
 
 ### Output Format
@@ -94,16 +96,18 @@ Score: 36/40
 
 ---
 
-## `/audit` - Full Marketing Audit
+## `audit` - Full Marketing Audit
 
 ### Purpose
 Analyze any URL or content against all 5 marketing frameworks to get a comprehensive quality score and improvement recommendations.
 
 ### Syntax
 ```
-/audit <url>
-/audit [paste content directly]
+audit <url>
+audit [paste content directly]
 ```
+
+Or with slash command (if plugin registered): `/ai-marketer:audit <url>`
 
 ### Parameters
 | Parameter | Required | Description |
@@ -114,17 +118,17 @@ Analyze any URL or content against all 5 marketing frameworks to get a comprehen
 
 **Example 1: GitHub repository**
 ```
-/audit https://github.com/yourusername/your-project
+audit https://github.com/yourusername/your-project
 ```
 
 **Example 2: Landing page**
 ```
-/audit https://your-product.com
+audit https://your-product.com
 ```
 
 **Example 3: Pasted content**
 ```
-/audit
+audit
 
 Here's my README content:
 # My Project
@@ -218,15 +222,17 @@ zero setup. Trusted by 10,000+ developers."
 
 ---
 
-## `/readme` - Generate README
+## `readme` - Generate README
 
 ### Purpose
 Generate a conversion-focused GitHub README applying all 5 marketing frameworks.
 
 ### Syntax
 ```
-/readme
+readme
 ```
+
+Or with slash command (if plugin registered): `/ai-marketer:readme`
 
 ### Parameters
 This command is interactive. Claude will ask you questions.
@@ -328,19 +334,21 @@ Suggested: "Add user authentication with JWT tokens
 - Be specific in your answers - vague input = generic output
 - If you don't have social proof yet, be honest - Claude can suggest alternatives
 - Review and customize the output - it's a starting point
-- Run `/audit` on the generated README to verify quality
+- Run `audit` on the generated README to verify quality
 
 ---
 
-## `/compete` - Competitor Analysis
+## `compete` - Competitor Analysis
 
 ### Purpose
 Analyze competitor websites or repositories to identify positioning gaps and differentiation opportunities.
 
 ### Syntax
 ```
-/compete <url>
+compete <url>
 ```
+
+Or with slash command (if plugin registered): `/ai-marketer:compete <url>`
 
 ### Parameters
 | Parameter | Required | Description |
@@ -351,19 +359,19 @@ Analyze competitor websites or repositories to identify positioning gaps and dif
 
 **Example 1: Competitor website**
 ```
-/compete https://competitor-product.com
+compete https://competitor-product.com
 ```
 
 **Example 2: Competitor GitHub**
 ```
-/compete https://github.com/competitor/their-tool
+compete https://github.com/competitor/their-tool
 ```
 
 **Example 3: Multiple competitors**
 ```
-/compete https://competitor1.com
-/compete https://competitor2.com
-/compete https://competitor3.com
+compete https://competitor1.com
+compete https://competitor2.com
+compete https://competitor3.com
 ```
 
 ### Output Format
@@ -460,16 +468,18 @@ we [your unique approach] because [reason]."
 
 ---
 
-## `/voice` - Voice Extraction
+## `voice` - Voice Extraction
 
 ### Purpose
 Analyze existing content to extract voice patterns for consistent brand messaging across all generated content.
 
 ### Syntax
 ```
-/voice <url>
-/voice [paste existing content]
+voice <url>
+voice [paste existing content]
 ```
+
+Or with slash command (if plugin registered): `/ai-marketer:voice <url>`
 
 ### Parameters
 | Parameter | Required | Description |
@@ -480,22 +490,22 @@ Analyze existing content to extract voice patterns for consistent brand messagin
 
 **Example 1: GitHub profile**
 ```
-/voice https://github.com/yourusername
+voice https://github.com/yourusername
 ```
 
 **Example 2: Twitter profile**
 ```
-/voice https://twitter.com/yourhandle
+voice https://twitter.com/yourhandle
 ```
 
 **Example 3: Blog or website**
 ```
-/voice https://your-blog.com
+voice https://your-blog.com
 ```
 
 **Example 4: Pasted samples**
 ```
-/voice
+voice
 
 Here's some of my existing writing:
 
@@ -613,35 +623,35 @@ Product description in this voice:
 ### Best Practice Workflow
 
 ```
-1. /voice https://github.com/yourusername
+1. voice https://github.com/yourusername
    (Establish your voice first)
 
-2. /compete https://competitor1.com
-   /compete https://competitor2.com
+2. compete https://competitor1.com
+   compete https://competitor2.com
    (Understand the landscape)
 
-3. /readme
+3. readme
    (Generate README with context)
 
-4. /audit [the generated readme]
+4. audit [the generated readme]
    (Verify quality)
 
-5. /score "your headline options"
+5. score "your headline options"
    (Fine-tune headlines)
 ```
 
 ### Quick Improvement Flow
 
 ```
-1. /audit https://github.com/you/project
+1. audit https://github.com/you/project
    (See current state)
 
-2. /score "current headline"
+2. score "current headline"
    (Diagnose headline)
 
 3. [Make improvements based on feedback]
 
-4. /audit [updated content]
+4. audit [updated content]
    (Verify improvement)
 ```
 
@@ -662,7 +672,7 @@ Product description in this voice:
 
 If you need help with commands:
 
-1. Type `/help` in Claude Code for general help
+1. Type `help` in Claude Code for general help
 2. See this documentation for detailed reference
 3. Check [Troubleshooting](../troubleshooting.md) for common issues
 4. Report bugs on GitHub Issues

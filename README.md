@@ -31,22 +31,40 @@ git clone https://github.com/az9713/ai-marketing.git
 # Navigate to the project
 cd ai-marketing
 
-# Start Claude Code (plugin auto-loads)
+# Start Claude Code
 claude
 
-# Try it out
-/score "Your headline here"
+# Try it out (natural language)
+score "Your headline here"
 ```
 
-## Commands
+## Using the Commands
+
+You can use commands in two ways:
+
+### Option 1: Natural Language (Recommended)
+
+Just type what you want:
+
+```
+score "Your headline here"
+audit this readme
+generate a readme for my project
+analyze competitor https://example.com
+extract my writing voice from this text
+```
+
+### Option 2: Slash Commands
+
+If you register the plugin with `claude --plugin-dir "./.claude/plugins/ai-marketer"`:
 
 | Command | What It Does |
 |---------|--------------|
-| `/score` | Score a headline against NESB (0-40) |
-| `/audit` | Full marketing audit of any URL |
-| `/readme` | Generate an optimized README |
-| `/compete` | Analyze competitor positioning |
-| `/voice` | Extract your writing voice |
+| `/ai-marketer:score` | Score a headline against NESB (0-40) |
+| `/ai-marketer:audit` | Full marketing audit of any URL |
+| `/ai-marketer:readme` | Generate an optimized README |
+| `/ai-marketer:compete` | Analyze competitor positioning |
+| `/ai-marketer:voice` | Extract your writing voice |
 
 ## Documentation
 
@@ -68,7 +86,10 @@ claude
 
 ```
 ai-marketing/
+├── CLAUDE.md                      # Framework context (auto-loaded)
 ├── .claude/plugins/ai-marketer/   # The plugin
+│   ├── .claude-plugin/            # Plugin manifest
+│   │   └── plugin.json
 │   ├── skills/                    # 8 marketing skills
 │   ├── agents/                    # 3 subagents
 │   ├── commands/                  # 5 slash commands

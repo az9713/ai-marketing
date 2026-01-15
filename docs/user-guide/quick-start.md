@@ -24,7 +24,9 @@ cd /path/to/ai-marketing
 claude
 ```
 
-**What to expect**: The plugin auto-loads because it's in the `.claude/plugins/` folder. Verify by asking Claude: "What marketing commands are available?"
+**What to expect**: Claude reads the CLAUDE.md file which contains all framework instructions. You can use commands via natural language (recommended) or slash commands if the plugin is registered.
+
+**Verify it works** by typing: `score "test headline"`
 
 ---
 
@@ -34,10 +36,10 @@ claude
 
 **The Problem**: You've written a headline but don't know if it's good.
 
-**The Solution**: Use `/score` to get instant feedback.
+**The Solution**: Use the `score` command to get instant feedback.
 
 ```
-/score AI-powered code completion tool
+score AI-powered code completion tool
 ```
 
 **What You'll See**:
@@ -90,10 +92,10 @@ Can you give me 5 alternatives that score higher?
 
 **The Problem**: Your project has a README, but you're not sure if it's compelling.
 
-**The Solution**: Use `/audit` to analyze it.
+**The Solution**: Use the `audit` command to analyze it.
 
 ```
-/audit https://github.com/yourusername/your-project
+audit https://github.com/yourusername/your-project
 ```
 
 **What You'll See**: A comprehensive report:
@@ -134,13 +136,13 @@ Top 3 Improvements:
 **The Solution**: Score both and compare.
 
 ```
-/score "Build apps faster with AI"
+score "Build apps faster with AI"
 ```
 
 Then:
 
 ```
-/score "Stop losing weekends to debugging. Ship in hours, not days."
+score "Stop losing weekends to debugging. Ship in hours, not days."
 ```
 
 **What You'll See**: Scores for each, making the winner clear.
@@ -155,10 +157,10 @@ Then:
 
 **The Problem**: You need a new README for your project.
 
-**The Solution**: Use `/readme` to generate one.
+**The Solution**: Use the `readme` command to generate one.
 
 ```
-/readme
+readme
 ```
 
 Claude will ask you:
@@ -184,10 +186,10 @@ Claude will ask you:
 
 **The Problem**: You want to know how your competitors position themselves.
 
-**The Solution**: Use `/compete` to analyze their website.
+**The Solution**: Use the `compete` command to analyze their website.
 
 ```
-/compete https://competitor-product.com
+compete https://competitor-product.com
 ```
 
 **What You'll See**:
@@ -221,16 +223,16 @@ Your Opportunity:
 
 **The Problem**: You want generated content to sound like YOU, not generic AI.
 
-**The Solution**: Use `/voice` to analyze your existing content.
+**The Solution**: Use the `voice` command to analyze your existing content.
 
 ```
-/voice https://github.com/yourusername
+voice https://github.com/yourusername
 ```
 
 Or paste some of your writing:
 
 ```
-/voice
+voice
 
 Here's some of my existing writing:
 "I built this because I was tired of [problem].
@@ -392,11 +394,11 @@ Now that you've tried these quick wins:
 
 | Command | What It Does | Example |
 |---------|--------------|---------|
-| `/score` | Score a headline | `/score "Your headline"` |
-| `/audit` | Full marketing audit | `/audit https://github.com/user/repo` |
-| `/readme` | Generate README | `/readme` |
-| `/compete` | Analyze competitor | `/compete https://competitor.com` |
-| `/voice` | Extract voice | `/voice https://github.com/user` |
+| `score` | Score a headline | `score "Your headline"` |
+| `audit` | Full marketing audit | `audit https://github.com/user/repo` |
+| `readme` | Generate README | `readme` |
+| `compete` | Analyze competitor | `compete https://competitor.com` |
+| `voice` | Extract voice | `voice https://github.com/user` |
 
 ## Tips for Success
 

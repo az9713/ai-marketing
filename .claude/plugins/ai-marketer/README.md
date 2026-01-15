@@ -34,17 +34,29 @@ AI Marketer brings 5 proven marketing frameworks into your Claude Code workflow:
 # Navigate to the project folder containing the plugin
 cd /path/to/ai-marketing
 
-# Start Claude Code (plugin auto-loads from .claude/plugins/)
+# Start Claude Code with the plugin
+claude --plugin-dir "./.claude/plugins/ai-marketer"
+
+# Or start normally and use natural language
 claude
+```
 
-# Score any headline instantly
-/score "Your AI product headline here"
+### Using the Commands
 
-# Full marketing audit of your repo
-/audit https://github.com/you/your-project
+You can use commands in two ways:
 
-# Generate an optimized README
-/readme
+**Option 1: Natural Language (Always Works)**
+```
+score "Your AI product headline here"
+audit https://github.com/you/your-project
+generate a readme for my project
+```
+
+**Option 2: Slash Commands (When Plugin Registered)**
+```
+/ai-marketer:score "Your headline"
+/ai-marketer:audit https://github.com/you/your-project
+/ai-marketer:readme
 ```
 
 **That's it.** No configuration. No marketing degree required.
@@ -131,10 +143,26 @@ These aren't random marketing tips. They're the distilled wisdom from 5 bestsell
 
 ```
 .claude/plugins/ai-marketer/
+├── .claude-plugin/   # Plugin manifest (required for registration)
+│   └── plugin.json
 ├── skills/           # 8 specialized marketing skills
 ├── agents/           # 3 subagents for complex tasks
 ├── commands/         # 5 slash commands
 └── hooks/            # Auto-review triggers
+```
+
+## Installation
+
+**Option 1: Use from this project directory**
+```bash
+cd /path/to/ai-marketing
+claude
+```
+The CLAUDE.md file provides all framework context automatically.
+
+**Option 2: Register as plugin (for slash commands)**
+```bash
+claude --plugin-dir "./.claude/plugins/ai-marketer"
 ```
 
 ## The Frameworks in Detail

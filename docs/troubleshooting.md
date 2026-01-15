@@ -80,26 +80,39 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 ### Problem: Commands Not Recognized
 
 **Symptoms**:
-- `/score` is treated as regular text
+- Commands like `score` aren't working
 - Claude doesn't know about marketing frameworks
 
 **Solution**:
 
-1. **Verify you're in the right directory**:
+1. **Use natural language (recommended)**:
+   ```
+   score "Your headline here"
+   audit https://github.com/username/repo
+   ```
+   Natural language commands work when Claude loads the CLAUDE.md context file.
+
+2. **Or use namespaced slash commands (if plugin registered)**:
+   ```
+   /ai-marketer:score "Your headline here"
+   /ai-marketer:audit https://github.com/username/repo
+   ```
+
+3. **Verify you're in the right directory**:
    ```bash
    pwd
    # Should show path ending in ai-marketing
    ```
 
-2. **Check plugin structure**:
+4. **Check plugin structure**:
    ```bash
    ls .claude/plugins/ai-marketer/
-   # Should show: plugin.json, skills/, commands/, etc.
+   # Should show: .claude-plugin/, skills/, commands/, etc.
    ```
 
-3. **Verify plugin.json exists and is valid**:
+5. **Verify plugin.json exists in correct location**:
    ```bash
-   cat .claude/plugins/ai-marketer/plugin.json
+   cat .claude/plugins/ai-marketer/.claude-plugin/plugin.json
    ```
    Should show valid JSON like:
    ```json
@@ -110,15 +123,15 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
    }
    ```
 
-4. **Restart Claude Code**:
+6. **Restart Claude Code**:
    - Exit Claude Code (type `exit` or Ctrl+C)
    - Start again: `claude`
 
-5. **Test plugin loading**:
+7. **Test plugin loading**:
    ```
    What marketing commands do you have available?
    ```
-   Claude should mention `/score`, `/audit`, `/readme`, etc.
+   Claude should mention `score`, `audit`, `readme`, etc.
 
 ### Problem: Skills Not Being Used
 
@@ -152,7 +165,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 ## Command Issues
 
-### Problem: /score Returns No Output
+### Problem: `score` Returns No Output
 
 **Symptoms**:
 - Command runs but nothing happens
@@ -162,12 +175,12 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 1. **Provide input correctly**:
    ```
-   /score "Your headline in quotes"
+   score "Your headline in quotes"
    ```
 
 2. **Try without quotes for simple headlines**:
    ```
-   /score Simple headline here
+   score Simple headline here
    ```
 
 3. **Check command file**:
@@ -176,7 +189,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
    ```
    Ensure frontmatter has `name: score`
 
-### Problem: /audit Fails on URL
+### Problem: `audit` Fails on URL
 
 **Symptoms**:
 - Error message about URL
@@ -190,18 +203,18 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 2. **Try with HTTPS**:
    ```
-   /audit https://github.com/username/repo
+   audit https://github.com/username/repo
    ```
 
 3. **For private repos, paste content instead**:
    ```
-   /audit
+   audit
 
    Here's my README content:
    [paste content]
    ```
 
-### Problem: /readme Doesn't Ask Questions
+### Problem: `readme` Doesn't Ask Questions
 
 **Symptoms**:
 - README generated without asking for input
@@ -211,7 +224,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 1. **Provide context upfront**:
    ```
-   /readme
+   readme
 
    My project is a CLI tool for developers that helps with X.
    Target audience: Y
@@ -220,7 +233,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 2. **Ask for interactive mode**:
    ```
-   /readme - please ask me questions about my project first
+   readme - please ask me questions about my project first
    ```
 
 ---
@@ -284,7 +297,7 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 
 1. **Use voice extraction first**:
    ```
-   /voice
+   voice
 
    Here's some of my writing:
    [paste 300-500 words of your existing content]
@@ -337,12 +350,12 @@ This guide helps you solve common problems with AI Marketer. Find your issue bel
 **Solution**:
 
 1. **This may be normal for**:
-   - `/audit` (fetches and analyzes web pages)
-   - `/compete` (visits competitor sites)
-   - `/readme` (generates comprehensive content)
+   - `audit` (fetches and analyzes web pages)
+   - `compete` (visits competitor sites)
+   - `readme` (generates comprehensive content)
 
 2. **For faster scoring**:
-   - Use `/score` instead of `/audit` for quick checks
+   - Use `score` instead of `audit` for quick checks
    - Score one headline at a time
 
 3. **Check your internet connection**:
@@ -405,13 +418,13 @@ NESB scores are **guidance, not gospel**:
 
 **Problem**: Content sounds generic
 
-**Solution**: Always run `/voice` first with samples of your existing content
+**Solution**: Always run `voice` first with samples of your existing content
 
 ### Mistake 5: Not Providing Context
 
 **Vague**:
 ```
-/score "Fast tool"
+score "Fast tool"
 ```
 
 **Better**:
@@ -456,7 +469,7 @@ If nothing works:
 
 3. **Be specific**:
    - "It doesn't work" → Hard to help
-   - "/score returns blank output when given a headline with quotes" → Actionable
+   - "score returns blank output when given a headline with quotes" → Actionable
 
 ---
 
@@ -465,7 +478,7 @@ If nothing works:
 | Problem | Quick Fix |
 |---------|-----------|
 | Commands not working | Restart Claude Code from project root |
-| Low quality output | Use /voice first, provide more context |
+| Low quality output | Use `voice` first, provide more context |
 | Scores seem wrong | Ask for detailed breakdown |
 | Can't access URL | Paste content directly instead |
 | Generic content | Extract voice first, be specific about audience |

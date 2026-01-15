@@ -28,7 +28,7 @@ This document provides comprehensive test results for all 10 use cases documente
 ### How Tests Were Conducted
 
 All tests were executed within Claude Code with the AI Marketer plugin loaded. The plugin reads instructions from `CLAUDE.md` which contains:
-- Command definitions (`/score`, `/audit`, `/readme`, `/compete`, `/voice`)
+- Command definitions (`score`, `audit`, `readme`, `compete`, `voice`)
 - Framework reference (NESB, Cialdini's 7 Levers, etc.)
 - Output format specifications
 
@@ -57,7 +57,7 @@ Each test was evaluated against:
 ## Test 1: Score a Headline
 
 ### What This Tests
-The `/score` command evaluates a headline against the NESB framework (NEW, EASY, SAFE, BIG), providing a score from 0-40 and improvement suggestions.
+The `score` command evaluates a headline against the NESB framework (NEW, EASY, SAFE, BIG), providing a score from 0-40 and improvement suggestions.
 
 ### Framework Used
 📘 *Take Their Money* (Milligan) — NESB scoring for the 4 emotional triggers
@@ -153,7 +153,7 @@ Here are 5 alternatives with higher NESB scores:
 ## Test 3: Audit GitHub README
 
 ### What This Tests
-The `/audit` command performs a comprehensive marketing analysis against all 5 frameworks.
+The `audit` command performs a comprehensive marketing analysis against all 5 frameworks.
 
 ### Frameworks Used
 - 📘 *Take Their Money* (Milligan) — NESB scoring
@@ -301,7 +301,7 @@ score "Stop losing weekends to debugging. Ship in hours, not days."
 ## Test 5: Generate a README
 
 ### What This Tests
-The `/readme` command generates a framework-optimized README from project details.
+The `readme` command generates a framework-optimized README from project details.
 
 ### Frameworks Used
 - 📘 *Take Their Money* (Milligan) — NESB-optimized hero
@@ -400,7 +400,7 @@ csv-to-json data.csv --pretty
 ## Test 6: Analyze a Competitor
 
 ### What This Tests
-The `/compete` command analyzes competitor positioning to find differentiation opportunities.
+The `compete` command analyzes competitor positioning to find differentiation opportunities.
 
 ### Frameworks Used
 - 📘 *Take Their Money* (Milligan) — NESB scoring
@@ -497,7 +497,7 @@ compete https://competitor-product.com
 ## Test 7: Extract Writing Voice
 
 ### What This Tests
-The `/voice` command analyzes existing content to extract a voice profile for consistent content generation.
+The `voice` command analyzes existing content to extract a voice profile for consistent content generation.
 
 ### Framework Used
 🔧 *Supporting Capability* — Voice extraction ensures framework-optimized content sounds authentic

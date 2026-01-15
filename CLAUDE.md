@@ -8,9 +8,9 @@ AI Marketer is a Claude Code plugin that helps developers write better marketing
 
 ## COMMANDS - IMPORTANT
 
-When the user types any of these commands, execute them immediately:
+When the user asks to score, audit, generate a readme, analyze competitors, or extract voice, execute these commands immediately. Users can type naturally (e.g., "score this headline") or use slash commands if the plugin is registered.
 
-### /score [text]
+### score [text]
 
 Score the given headline/copy against the NESB framework (0-40).
 
@@ -42,7 +42,7 @@ Score the given headline/copy against the NESB framework (0-40).
 - 25-32: Strong (hits most triggers)
 - 33-40: Exceptional (hits all 4 powerfully)
 
-### /audit [URL or content]
+### audit [URL or content]
 
 Full marketing audit against all 5 frameworks:
 1. Diagnose awareness level (Schwartz)
@@ -53,7 +53,7 @@ Full marketing audit against all 5 frameworks:
 
 Output: Comprehensive report with scores and specific improvements.
 
-### /readme
+### readme
 
 Generate an optimized GitHub README. Ask the user:
 1. What does your project do?
@@ -68,7 +68,7 @@ Then generate a README that:
 - Has quick-start in under 30 seconds
 - Uses loss-aversion framing
 
-### /compete [URL]
+### compete [URL]
 
 Analyze competitor positioning:
 1. Fetch and analyze their website/README
@@ -77,7 +77,7 @@ Analyze competitor positioning:
 4. Find gaps in their positioning
 5. Suggest differentiation opportunities
 
-### /voice [URL or content]
+### voice [URL or content]
 
 Extract voice profile from existing content:
 - Tone (formal/casual)
@@ -154,7 +154,7 @@ Every headline must hit 4 emotional triggers:
 
 ```
 ai-marketing/
-├── CLAUDE.md                          # This file
+├── CLAUDE.md                          # This file (auto-loaded by Claude)
 ├── README.md                          # GitHub README
 ├── LICENSE                            # MIT License
 ├── docs/                              # Documentation
@@ -162,7 +162,9 @@ ai-marketing/
 │   └── developer-guide/               # Developer documentation
 └── .claude/
     └── plugins/
-        └── ai-marketer/               # Plugin reference files
+        └── ai-marketer/               # Plugin files
+            ├── .claude-plugin/        # Plugin manifest
+            │   └── plugin.json
             ├── skills/                # Framework details
             ├── agents/                # Agent definitions
             └── commands/              # Command references

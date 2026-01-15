@@ -10,8 +10,14 @@ Generate a marketing-optimized GitHub README for your project.
 ## Usage
 
 ```
-/readme
-/readme [project name or description]
+/ai-marketer:readme
+/ai-marketer:readme [project name or description]
+```
+
+Or use natural language (when CLAUDE.md is loaded):
+```
+readme
+generate a readme for my project
 ```
 
 ## What This Command Does
@@ -81,7 +87,7 @@ Generate a marketing-optimized GitHub README for your project.
 ## Example
 
 ```
-/readme
+/ai-marketer:readme
 ```
 
 Will prompt for project details, then generate:

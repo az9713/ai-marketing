@@ -10,8 +10,13 @@ Get an instant NESB score for any headline or copy.
 ## Usage
 
 ```
-/score "Your headline here"
-/score Your headline without quotes also works
+/ai-marketer:score "Your headline here"
+/ai-marketer:score Your headline without quotes also works
+```
+
+Or use natural language (when CLAUDE.md is loaded):
+```
+score "Your headline here"
 ```
 
 ## What This Command Does
@@ -46,12 +51,12 @@ Get an instant NESB score for any headline or copy.
 ## Examples
 
 ```
-/score AI-powered code completion
+/ai-marketer:score AI-powered code completion
 ```
 → Score: 12/40 (weak - generic, no specifics)
 
 ```
-/score The first AI that reads your entire codebase - ship 10x faster with zero setup
+/ai-marketer:score The first AI that reads your entire codebase - ship 10x faster with zero setup
 ```
 → Score: 34/40 (strong - hits all 4 dimensions)
 

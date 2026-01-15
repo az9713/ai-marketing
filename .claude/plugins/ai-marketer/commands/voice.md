@@ -10,9 +10,15 @@ Analyze existing content to extract voice patterns for consistent content genera
 ## Usage
 
 ```
-/voice https://github.com/username
-/voice [paste existing content]
-/voice https://twitter.com/username
+/ai-marketer:voice https://github.com/username
+/ai-marketer:voice [paste existing content]
+/ai-marketer:voice https://twitter.com/username
+```
+
+Or use natural language (when CLAUDE.md is loaded):
+```
+voice https://github.com/username
+extract my writing voice from this text
 ```
 
 ## What This Command Does
@@ -95,7 +101,7 @@ When writing for this voice:
 ## Example
 
 ```
-/voice https://github.com/simonwillison
+/ai-marketer:voice https://github.com/simonwillison
 ```
 
 Will analyze repositories to extract:

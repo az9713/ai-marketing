@@ -10,8 +10,14 @@ Analyze a competitor's website to understand their positioning and find opportun
 ## Usage
 
 ```
-/compete https://competitor.com
-/compete [competitor name]
+/ai-marketer:compete https://competitor.com
+/ai-marketer:compete [competitor name]
+```
+
+Or use natural language (when CLAUDE.md is loaded):
+```
+compete https://competitor.com
+analyze competitor https://competitor.com
 ```
 
 ## What This Command Does
@@ -72,7 +78,7 @@ This command uses Claude in Chrome when available:
 
 For comparing multiple competitors:
 ```
-/compete https://competitor1.com https://competitor2.com
+/ai-marketer:compete https://competitor1.com https://competitor2.com
 ```
 
 Will provide:
@@ -84,7 +90,7 @@ Will provide:
 ## Example
 
 ```
-/compete https://linear.app
+/ai-marketer:compete https://linear.app
 ```
 
 Will analyze Linear's positioning and provide:

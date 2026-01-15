@@ -10,9 +10,14 @@ Run a comprehensive marketing audit on content or a URL.
 ## Usage
 
 ```
-/audit [url or paste content]
-/audit https://example.com
-/audit "Your headline or copy to audit"
+/ai-marketer:audit [url or paste content]
+/ai-marketer:audit https://example.com
+/ai-marketer:audit "Your headline or copy to audit"
+```
+
+Or use natural language (when CLAUDE.md is loaded):
+```
+audit https://example.com
 ```
 
 ## What This Command Does
@@ -46,7 +51,7 @@ Provide a consolidated audit report with:
 ## Example
 
 ```
-/audit https://github.com/user/repo
+/ai-marketer:audit https://github.com/user/repo
 ```
 
 Will analyze the README and provide:

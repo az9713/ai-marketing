@@ -8,7 +8,19 @@ AI Marketer is a Claude Code plugin that helps developers write better marketing
 
 ## COMMANDS - IMPORTANT
 
-When the user asks to score, audit, generate a readme, analyze competitors, or extract voice, execute these commands immediately. Users can type naturally (e.g., "score this headline") or use slash commands if the plugin is registered.
+When the user asks to score, audit, generate a readme, analyze competitors, or extract voice, execute these commands immediately.
+
+**Two ways to use commands:**
+
+| Natural Language | Slash Command (plugin registered) |
+|------------------|-----------------------------------|
+| `score "headline"` | `/ai-marketer:score "headline"` |
+| `audit https://...` | `/ai-marketer:audit https://...` |
+| `readme` | `/ai-marketer:readme` |
+| `compete https://...` | `/ai-marketer:compete https://...` |
+| `voice https://...` | `/ai-marketer:voice https://...` |
+
+---
 
 ### score [text]
 

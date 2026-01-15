@@ -7,7 +7,7 @@
           "path": "**/README.md"
         },
         "description": "Auto-review README after generation",
-        "command": "echo '[AI-Marketer] README written - consider running /audit for quality check'"
+        "command": "echo '[AI-Marketer] README written - consider running audit (or /ai-marketer:audit) for quality check'"
       },
       {
         "matcher": {
@@ -15,7 +15,7 @@
           "path": "**/*landing*.md"
         },
         "description": "Auto-review landing page content after generation",
-        "command": "echo '[AI-Marketer] Landing page content written - consider running /score on headlines'"
+        "command": "echo '[AI-Marketer] Landing page content written - consider running score (or /ai-marketer:score) on headlines'"
       }
     ],
     "UserPromptSubmit": [
@@ -24,7 +24,7 @@
           "prompt": "(?i).*(readme|landing page|marketing|copy|headline|tagline).*"
         },
         "description": "Remind about marketing frameworks when relevant topics mentioned",
-        "command": "echo '[AI-Marketer] Marketing content detected. Available commands: /audit, /score, /readme, /compete, /voice'"
+        "command": "echo '[AI-Marketer] Marketing content detected. Available commands: audit, score, readme, compete, voice (or /ai-marketer:*)'"
       }
     ]
   }

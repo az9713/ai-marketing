@@ -49,17 +49,17 @@ No. The frameworks help you communicate your value more effectively. They work b
 
 Ask Claude: "What marketing commands are available?"
 
-Claude should mention `/score`, `/audit`, `/readme`, `/compete`, and `/voice`.
+Claude should mention `score`, `audit`, `readme`, `compete`, and `voice` (or `/ai-marketer:*` slash commands).
 
 ### Do I need an internet connection?
 
 Yes, for:
-- `/audit` when analyzing URLs
-- `/compete` when analyzing competitor sites
+- `audit` when analyzing URLs
+- `compete` when analyzing competitor sites
 - Any web-based voice extraction
 
 No, for:
-- `/score` with text input
+- `score` with text input
 - Content generation from pasted text
 - Voice extraction from pasted samples
 
@@ -67,14 +67,14 @@ No, for:
 
 ## Using Commands
 
-### What's the difference between /score and /audit?
+### What's the difference between score and audit?
 
 | Command | Purpose | Speed | Depth |
 |---------|---------|-------|-------|
-| `/score` | Quick headline scoring | Fast | NESB only |
-| `/audit` | Comprehensive analysis | Slower | All frameworks |
+| `score` | Quick headline scoring | Fast | NESB only |
+| `audit` | Comprehensive analysis | Slower | All frameworks |
 
-Use `/score` for quick iterations. Use `/audit` for thorough review.
+Use `score` for quick iterations. Use `audit` for thorough review.
 
 ### Can I score multiple headlines at once?
 
@@ -86,7 +86,7 @@ Score these headlines:
 3. "Third headline"
 ```
 
-Or run `/score` multiple times.
+Or run `score` (or `/ai-marketer:score`) multiple times.
 
 ### What score should I aim for?
 
@@ -155,7 +155,7 @@ This creates unity and loyalty.
 ### Why does my output sound generic?
 
 Common causes:
-1. **No voice extraction**: Run `/voice` first with samples of your writing
+1. **No voice extraction**: Run `voice` first with samples of your writing
 2. **Vague input**: Provide more context about your product and audience
 3. **No examples**: Share examples of copy you like
 
@@ -163,7 +163,7 @@ Common causes:
 
 1. Extract your voice profile first:
    ```
-   /voice [paste 500+ words of your writing]
+   voice [paste 500+ words of your writing]
    ```
 
 2. Reference your voice in requests:
@@ -336,7 +336,7 @@ Score this and explain your reasoning for each NESB dimension
 - Check URL is public (no login required)
 - Paste content directly instead:
   ```
-  /audit
+  audit
 
   Here's the content:
   [paste text]

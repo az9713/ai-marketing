@@ -46,7 +46,7 @@ AI Marketer is a **Claude Code plugin**. Claude Code is Anthropic's CLI tool tha
 |-----------|---------|-------|
 | **Skills** | Reusable knowledge that Claude can reference | Markdown files with frontmatter |
 | **Agents** | Specialized workers for complex tasks | Markdown files with agent config |
-| **Commands** | User-triggered actions (like `/score`) | Markdown files defining the command |
+| **Commands** | User-triggered actions (like `/ai-marketer:score`) | Markdown files defining the command |
 | **Hooks** | Automatic triggers on events | JSON configuration |
 
 ### The Technology Stack
@@ -210,7 +210,7 @@ In Claude Code, try:
 What marketing commands are available?
 ```
 
-Claude should mention `/score`, `/audit`, `/readme`, `/compete`, and `/voice`.
+Claude should mention the 5 commands: `score`, `audit`, `readme`, `compete`, and `voice` (or their slash command equivalents `/ai-marketer:score`, etc.).
 
 ---
 
@@ -260,11 +260,11 @@ Claude should mention `/score`, `/audit`, `/readme`, `/compete`, and `/voice`.
 │   └── content-reviewer.md     # Review agent
 │
 ├── commands/                   # Slash commands
-│   ├── audit.md               # /audit
-│   ├── readme.md              # /readme
-│   ├── score.md               # /score
-│   ├── compete.md             # /compete
-│   └── voice.md               # /voice
+│   ├── audit.md               # /ai-marketer:audit
+│   ├── readme.md              # /ai-marketer:readme
+│   ├── score.md               # /ai-marketer:score
+│   ├── compete.md             # /ai-marketer:compete
+│   └── voice.md               # /ai-marketer:voice
 │
 └── hooks/
     └── hooks.json             # Event triggers
@@ -332,7 +332,7 @@ description: Score a headline against NESB framework
 
 # Score Command
 
-[Instructions for what happens when user types /score]
+[Instructions for what happens when user types /ai-marketer:score]
 ```
 
 ---
@@ -408,7 +408,7 @@ Claude should reference the NESB framework and potentially use your new example 
 
 2. Run the command:
    ```
-   /score "Your test headline here"
+   score "Your test headline here"
    ```
 
 3. Verify the output format and quality

@@ -278,7 +278,13 @@ Unite against a common enemy.
 
 ## All Commands Explained
 
-### `/score` - Score Your Headlines
+You can use commands in two ways:
+- **Natural language** (recommended): `score "headline"`
+- **Slash command** (plugin registered): `/ai-marketer:score "headline"`
+
+---
+
+### `score` - Score Your Headlines
 
 **What it does**: Instantly scores any headline or piece of copy against the NESB framework.
 
@@ -286,16 +292,18 @@ Unite against a common enemy.
 
 **Examples**:
 ```
-/score "AI-powered code completion"
-/score "Stop losing hours to debugging. Ship 3x faster."
-/score "The first AI that reads your entire codebase"
+score "AI-powered code completion"
+score "Stop losing hours to debugging. Ship 3x faster."
+score "The first AI that reads your entire codebase"
 ```
+
+Slash command: `/ai-marketer:score`
 
 **What you'll get**: A 0-40 score with breakdown for each dimension and suggestions for improvement.
 
 ---
 
-### `/audit` - Full Marketing Audit
+### `audit` - Full Marketing Audit
 
 **What it does**: Analyzes any URL or content against all 5 frameworks.
 
@@ -303,10 +311,12 @@ Unite against a common enemy.
 
 **Examples**:
 ```
-/audit https://github.com/yourusername/your-project
-/audit https://your-landing-page.com
-/audit [paste your marketing copy here]
+audit https://github.com/yourusername/your-project
+audit https://your-landing-page.com
+audit [paste your marketing copy here]
 ```
+
+Slash command: `/ai-marketer:audit`
 
 **What you'll get**:
 - Overall score (0-100)
@@ -318,7 +328,7 @@ Unite against a common enemy.
 
 ---
 
-### `/readme` - Generate Optimized README
+### `readme` - Generate Optimized README
 
 **What it does**: Creates a conversion-focused GitHub README for your project.
 
@@ -326,8 +336,10 @@ Unite against a common enemy.
 
 **How to use**:
 ```
-/readme
+readme
 ```
+
+Slash command: `/ai-marketer:readme`
 
 Claude will ask you:
 1. What does your project do?
@@ -344,7 +356,7 @@ Claude will ask you:
 
 ---
 
-### `/compete` - Analyze Competitors
+### `compete` - Analyze Competitors
 
 **What it does**: Analyzes competitor websites to find positioning opportunities.
 
@@ -352,9 +364,11 @@ Claude will ask you:
 
 **Examples**:
 ```
-/compete https://competitor-product.com
-/compete https://github.com/competitor/their-repo
+compete https://competitor-product.com
+compete https://github.com/competitor/their-repo
 ```
+
+Slash command: `/ai-marketer:compete`
 
 **What you'll get**:
 - Competitor's positioning
@@ -365,7 +379,7 @@ Claude will ask you:
 
 ---
 
-### `/voice` - Extract Your Voice
+### `voice` - Extract Your Voice
 
 **What it does**: Analyzes your existing content to create a voice profile.
 
@@ -373,10 +387,12 @@ Claude will ask you:
 
 **Examples**:
 ```
-/voice https://github.com/yourusername
-/voice https://twitter.com/yourhandle
-/voice [paste samples of your writing]
+voice https://github.com/yourusername
+voice https://twitter.com/yourhandle
+voice [paste samples of your writing]
 ```
+
+Slash command: `/ai-marketer:voice`
 
 **What you'll get**:
 - Voice in 3 words
@@ -460,23 +476,23 @@ Best for: Launch day
 
 ### For a New Project
 
-1. **Start with `/voice`** to capture your existing style
-2. **Use `/readme`** to generate initial README
-3. **Run `/audit`** to check the score
+1. **Start with `voice`** to capture your existing style
+2. **Use `readme`** to generate initial README
+3. **Run `audit`** to check the score
 4. **Iterate** on weak areas
-5. **Use `/score`** to test headline variations
+5. **Use `score`** to test headline variations
 
 ### For Improving Existing Content
 
-1. **Run `/audit`** on current content
+1. **Run `audit`** on current content
 2. **Identify weak frameworks** (NESB? Persuasion? Tribe?)
 3. **Rewrite weak sections** using framework principles
-4. **Test headlines** with `/score`
+4. **Test headlines** with `score`
 5. **Re-audit** to verify improvement
 
 ### For Competitive Positioning
 
-1. **Use `/compete`** on 2-3 main competitors
+1. **Use `compete`** on 2-3 main competitors
 2. **Find gaps** in their positioning
 3. **Choose your differentiation angle**
 4. **Generate content** emphasizing your unique angle
@@ -485,7 +501,7 @@ Best for: Launch day
 ### For Launch Day
 
 1. **Prepare content** for all platforms in advance
-2. **Use `/voice`** to ensure consistency
+2. **Use `voice`** to ensure consistency
 3. **Score all headlines** - aim for 30+/40
 4. **Audit everything** - aim for 70+/100
 5. **Apply scarcity** elements for launch
@@ -518,7 +534,7 @@ The magic happens when you combine frameworks:
 
 ### A/B Testing Headlines
 
-Use `/score` to compare variations:
+Use `score` to compare variations:
 
 1. Write 5 headline options
 2. Score each one
@@ -530,7 +546,7 @@ Use `/score` to compare variations:
 
 Before any content generation:
 
-1. Run `/voice` on your best existing content
+1. Run `voice` on your best existing content
 2. Save the voice profile
 3. Reference it in generation requests
 4. Check output against profile

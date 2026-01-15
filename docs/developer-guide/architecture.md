@@ -80,6 +80,8 @@ This document explains how the AI Marketer plugin is structured and why design d
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
+*Note: Commands shown as `/audit`, `/score`, etc. in diagrams use short names for clarity. Full syntax is `/ai-marketer:command` (e.g., `/ai-marketer:score`). Natural language alternatives (e.g., `score "headline"`) also work.*
+
 ### The Four Layers
 
 | Layer | Purpose | Components |
@@ -189,7 +191,8 @@ description: Score a headline against NESB
 # Score Command
 
 ## Usage
-/score <headline>
+/ai-marketer:score <headline>
+(Or natural language: score <headline>)
 
 ## What This Does
 [Instructions]
@@ -197,11 +200,12 @@ description: Score a headline against NESB
 
 #### Command Naming
 
-Commands are invoked with `/name`:
-- `/score` → commands/score.md
-- `/audit` → commands/audit.md
+Plugin commands are invoked with `/plugin-name:command`:
+- `/ai-marketer:score` → commands/score.md
+- `/ai-marketer:audit` → commands/audit.md
 
 The `name` in frontmatter must match the filename (without .md).
+Natural language alternatives (e.g., `score "headline"`) also work when CLAUDE.md is loaded.
 
 ### Hooks: The Automation Layer
 
@@ -226,7 +230,7 @@ Hooks **trigger automatically** on events. They run in the background.
           "path": "**/README.md"
         },
         "description": "Remind to audit README",
-        "command": "echo '[AI-Marketer] README written - consider /audit'"
+        "command": "echo '[AI-Marketer] README written - consider audit or /ai-marketer:audit'"
       }
     ],
     "UserPromptSubmit": [
@@ -235,7 +239,7 @@ Hooks **trigger automatically** on events. They run in the background.
           "prompt": "(?i).*(readme|marketing).*"
         },
         "description": "Suggest commands on keywords",
-        "command": "echo '[AI-Marketer] Available: /audit, /score, /readme'"
+        "command": "echo '[AI-Marketer] Available: audit, score, readme (or /ai-marketer:*)'"
       }
     ]
   }
@@ -258,13 +262,14 @@ Hooks **trigger automatically** on events. They run in the background.
 ### Typical User Workflow
 
 ```
-User types: /score "My AI tool helps developers"
+User types: score "My AI tool helps developers"
+            (or /ai-marketer:score "My AI tool helps developers")
             │
             ▼
 ┌───────────────────────────────────────────────────┐
 │ COMMAND LAYER                                      │
 │                                                    │
-│  score.md recognizes the /score command           │
+│  score.md recognizes the command                  │
 │  Extracts: headline = "My AI tool helps..."       │
 │                                                    │
 └────────────────────────┬──────────────────────────┘
@@ -303,13 +308,14 @@ User types: /score "My AI tool helps developers"
 ### Complex Workflow (Audit)
 
 ```
-User types: /audit https://github.com/user/repo
+User types: audit https://github.com/user/repo
+            (or /ai-marketer:audit https://github.com/user/repo)
             │
             ▼
 ┌───────────────────────────────────────────────────┐
 │ COMMAND LAYER: audit.md                           │
 │                                                    │
-│  Recognizes /audit command                        │
+│  Recognizes audit command                         │
 │  URL to analyze: https://github.com/user/repo    │
 │                                                    │
 └────────────────────────┬──────────────────────────┘
@@ -480,7 +486,7 @@ Here's why each marketing framework is implemented as a specific feature:
 
 **Why Both?**
 - Skill: Detailed framework for Claude to reference
-- Command: Quick `/score` for users
+- Command: Quick `score` (or `/ai-marketer:score`) for users
 
 The command provides fast access; the skill provides depth.
 

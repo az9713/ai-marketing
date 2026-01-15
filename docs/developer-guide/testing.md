@@ -136,9 +136,13 @@ When testing:
    claude
    ```
 
-2. Type the command:
+2. Type the command (natural language or slash command):
    ```
-   /score "test headline"
+   score "test headline"
+   ```
+   Or:
+   ```
+   /ai-marketer:score "test headline"
    ```
 
 3. Verify:
@@ -154,19 +158,19 @@ When testing:
 
 1. Test with required parameters:
    ```
-   /score "headline with all parameters"
+   score "headline with all parameters"
    ```
 
 2. Test without parameters (if optional):
    ```
-   /score
+   score
    ```
 
 3. Test with malformed input:
    ```
-   /score
-   /score ""
-   /score very long headline without quotes that goes on and on
+   score
+   score ""
+   score very long headline without quotes that goes on and on
    ```
 
 4. Verify:
@@ -182,7 +186,7 @@ When testing:
 
 1. Run command with known input:
    ```
-   /score "Stop losing hours to debugging. Ship 3x faster."
+   score "Stop losing hours to debugging. Ship 3x faster."
    ```
 
 2. Verify output includes:
@@ -199,11 +203,11 @@ Test these edge cases:
 
 | Test Case | Input | Expected Behavior |
 |-----------|-------|-------------------|
-| Empty input | `/score ""` | Prompt for input |
-| Very long input | `/score "[500 words]"` | Handle gracefully |
-| Special characters | `/score "Test & <test>"` | Handle correctly |
-| Non-English | `/score "Testez notre outil"` | Attempt to score |
-| Numbers only | `/score "123456"` | Low score, explain why |
+| Empty input | `score ""` | Prompt for input |
+| Very long input | `score "[500 words]"` | Handle gracefully |
+| Special characters | `score "Test & <test>"` | Handle correctly |
+| Non-English | `score "Testez notre outil"` | Attempt to score |
+| Numbers only | `score "123456"` | Low score, explain why |
 
 ---
 
@@ -328,7 +332,8 @@ Run these tests after any significant change:
 
 #### Test Case 1: Basic Scoring
 ```
-Input: /score "AI-powered development tool"
+Input: score "AI-powered development tool"
+(Or: /ai-marketer:score "AI-powered development tool")
 Expected:
 - Score in range 10-18/40
 - Identifies "generic" as issue
@@ -337,7 +342,8 @@ Expected:
 
 #### Test Case 2: Good Headline Scoring
 ```
-Input: /score "Stop losing 10 hours weekly. Join 50,000 devs shipping 10x faster."
+Input: score "Stop losing 10 hours weekly. Join 50,000 devs shipping 10x faster."
+(Or: /ai-marketer:score "Stop losing 10 hours weekly...")
 Expected:
 - Score in range 32-38/40
 - High marks on all 4 dimensions
@@ -346,7 +352,8 @@ Expected:
 
 #### Test Case 3: Full Audit
 ```
-Input: /audit https://github.com/[known test repo]
+Input: audit https://github.com/[known test repo]
+(Or: /ai-marketer:audit https://github.com/[known test repo])
 Expected:
 - Overall score provided
 - NESB breakdown
@@ -356,7 +363,8 @@ Expected:
 
 #### Test Case 4: README Generation
 ```
-Input: /readme
+Input: readme
+(Or: /ai-marketer:readme)
 (Then provide answers about a test product)
 Expected:
 - Complete README structure
@@ -367,7 +375,8 @@ Expected:
 
 #### Test Case 5: Voice Extraction
 ```
-Input: /voice [paste sample text]
+Input: voice [paste sample text]
+(Or: /ai-marketer:voice [paste sample text])
 Expected:
 - Voice profile with 3 words
 - Tone ratings
@@ -379,19 +388,22 @@ Expected:
 
 #### Test Case E1: No Input
 ```
-Input: /score
+Input: score
+(Or: /ai-marketer:score)
 Expected: Prompt for headline input
 ```
 
 #### Test Case E2: Invalid URL
 ```
-Input: /audit https://nonexistent-site-12345.com
+Input: audit https://nonexistent-site-12345.com
+(Or: /ai-marketer:audit https://nonexistent-site-12345.com)
 Expected: Graceful error message
 ```
 
 #### Test Case E3: Non-Marketing Content
 ```
-Input: /score "function calculateTotal(items) { return items.reduce((a,b) => a+b); }"
+Input: score "function calculateTotal(items) { return items.reduce((a,b) => a+b); }"
+(Or: /ai-marketer:score "function calculateTotal...")
 Expected: Low score with explanation that this isn't marketing copy
 ```
 
@@ -407,11 +419,11 @@ After making changes, verify existing functionality still works.
 
 After any change, test:
 
-- [ ] `/score` basic functionality
-- [ ] `/audit` on a known URL
-- [ ] `/readme` generation flow
-- [ ] `/compete` on a known competitor
-- [ ] `/voice` with sample text
+- [ ] `score` basic functionality (or `/ai-marketer:score`)
+- [ ] `audit` on a known URL (or `/ai-marketer:audit`)
+- [ ] `readme` generation flow (or `/ai-marketer:readme`)
+- [ ] `compete` on a known competitor (or `/ai-marketer:compete`)
+- [ ] `voice` with sample text (or `/ai-marketer:voice`)
 
 ### Change-Specific Testing
 

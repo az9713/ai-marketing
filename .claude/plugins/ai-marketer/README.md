@@ -63,10 +63,10 @@ generate a readme for my project
 
 ## What You Can Do
 
-### `/score` - Instant Headline Scoring
+### `score` - Instant Headline Scoring
 
 ```
-/score AI-powered code completion
+score AI-powered code completion
 
 > NESB Score: 12/40 (Weak)
 > - NEW: 3/10 - Generic, everyone says this
@@ -79,7 +79,9 @@ generate a readme for my project
 > Score: 34/40
 ```
 
-### `/audit` - Full Marketing Audit
+Slash command: `/ai-marketer:score`
+
+### `audit` - Full Marketing Audit
 
 Analyze any URL or content against all 5 frameworks:
 - Awareness level diagnosis
@@ -88,7 +90,9 @@ Analyze any URL or content against all 5 frameworks:
 - Tactical improvement opportunities
 - Tribe-building elements
 
-### `/readme` - Generate Optimized README
+Slash command: `/ai-marketer:audit`
+
+### `readme` - Generate Optimized README
 
 Creates a conversion-focused README that:
 - Leads with benefits, not features
@@ -97,7 +101,9 @@ Creates a conversion-focused README that:
 - Hits all 4 NESB dimensions
 - Matches your existing voice
 
-### `/compete` - Competitor Analysis
+Slash command: `/ai-marketer:readme`
+
+### `compete` - Competitor Analysis
 
 Analyze competitor websites to find:
 - Gaps in their positioning
@@ -105,13 +111,17 @@ Analyze competitor websites to find:
 - Differentiation opportunities
 - Counter-positioning strategies
 
-### `/voice` - Extract Your Voice
+Slash command: `/ai-marketer:compete`
+
+### `voice` - Extract Your Voice
 
 Analyze your existing content to:
 - Extract tone and vocabulary patterns
 - Create a voice profile for consistency
 - Adapt for different platforms
 - Never sound like generic AI output
+
+Slash command: `/ai-marketer:voice`
 
 ## Why These Frameworks?
 

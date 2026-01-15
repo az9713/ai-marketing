@@ -45,7 +45,7 @@ Claude Code provides several extensibility mechanisms. Here's what each does and
 |---------|---------------------|---------------|
 | 7-lever audit | **Skill** | Checklist-based analysis needs reference to all 7 levers |
 | Scoring rubric | **Skill (supporting file)** | Progressive disclosure - main skill loads rubric when needed |
-| UX/landing page audit | **Slash Command** | User wants quick `/audit` interface |
+| UX/landing page audit | **Slash Command** | User wants quick `audit` (or `/ai-marketer:audit`) interface |
 | Auto-audit on write | **Hook (PostToolUse)** | Can auto-trigger review after generating content |
 
 **Technical Decision**:
@@ -138,14 +138,14 @@ Why subagents over regular skills?
 
 ### Slash Commands (User Convenience)
 Commands provide quick access:
-- `/audit` - one-command full marketing audit
-- `/nesb` - quick headline scoring
-- `/readme` - generate optimized README
+- `audit` (or `/ai-marketer:audit`) - one-command full marketing audit
+- `score` (or `/ai-marketer:score`) - quick headline scoring
+- `readme` (or `/ai-marketer:readme`) - generate optimized README
 
 Why commands over just skills?
 - Explicit user intent (skills auto-trigger, commands are deliberate)
-- Parameter passing (`/audit https://competitor.com`)
-- Discoverability (users can `/help` to see available commands)
+- Parameter passing (`audit https://competitor.com` or `/ai-marketer:audit https://competitor.com`)
+- Discoverability (users can ask Claude what commands are available)
 
 ### Hooks (Automation)
 Hooks handle automatic processing:
@@ -194,7 +194,7 @@ User Request: "Optimize my GitHub README"
          |
          v
 +-------------------------------------------------------------+
-|  /readme Slash Command                                       |
+|  readme Command (or /ai-marketer:readme)                     |
 |  (User-triggered entry point)                                |
 +-------------------------------------------------------------+
          |
@@ -297,10 +297,10 @@ Build a single Claude Code plugin called `ai-marketer` that implements the 5 mar
 │   └── content-reviewer.md        # Review & score generated content
 │
 ├── commands/
-│   ├── audit.md                   # /audit - Full marketing audit
-│   ├── generate.md                # /generate - Create marketing content
-│   ├── score.md                   # /score - Score copy against frameworks
-│   └── compete.md                 # /compete - Analyze competitors
+│   ├── audit.md                   # audit (or /ai-marketer:audit) - Full marketing audit
+│   ├── generate.md                # generate - Create marketing content
+│   ├── score.md                   # score (or /ai-marketer:score) - Score copy against frameworks
+│   └── compete.md                 # compete (or /ai-marketer:compete) - Analyze competitors
 │
 └── hooks/
     └── hooks.json                 # Post-generation review hooks
@@ -374,7 +374,7 @@ allowed-tools: [Read, WebFetch, Task]
 
 **Output**: Copy variants hitting each element + combined version
 
-### 6. Voice Extractor (`/voice`)
+### 6. Voice Extractor (`voice` or `/ai-marketer:voice`)
 
 **Purpose**: Analyze existing content to extract voice patterns
 
@@ -385,7 +385,7 @@ allowed-tools: [Read, WebFetch, Task]
 - Brand personality traits
 - Voice guidelines document for consistent generation
 
-### 7. Competitor Analyzer (`/compete`)
+### 7. Competitor Analyzer (`compete` or `/ai-marketer:compete`)
 
 **Purpose**: Use browser automation to analyze competitor positioning
 
@@ -447,16 +447,18 @@ allowed-tools: [Read, WebFetch, Task]
 
 ## Slash Commands
 
+Commands can be invoked via natural language (e.g., `audit url`) or namespaced slash commands (e.g., `/ai-marketer:audit url`).
+
 | Command | Description | Skill(s) Used |
 |---------|-------------|---------------|
-| `/audit <url>` | Full marketing audit of a page | All analyzers |
-| `/readme` | Generate optimized GitHub README | Content generator |
-| `/landing` | Generate landing page copy | Content generator |
-| `/tweet` | Generate X/Twitter thread | Content generator |
-| `/linkedin` | Generate LinkedIn post | Content generator |
-| `/score <text>` | Score copy against all frameworks | All scorers |
-| `/compete <url>` | Analyze competitor | Competitor analyzer |
-| `/voice <urls>` | Extract voice from content | Voice extractor |
+| `audit <url>` | Full marketing audit of a page | All analyzers |
+| `readme` | Generate optimized GitHub README | Content generator |
+| `landing` | Generate landing page copy | Content generator |
+| `tweet` | Generate X/Twitter thread | Content generator |
+| `linkedin` | Generate LinkedIn post | Content generator |
+| `score <text>` | Score copy against all frameworks | All scorers |
+| `compete <url>` | Analyze competitor | Competitor analyzer |
+| `voice <urls>` | Extract voice from content | Voice extractor |
 
 ---
 
@@ -543,10 +545,10 @@ After any Write operation in marketing content files, automatically trigger the 
 ## Verification Plan
 
 1. **Unit test each skill**: Run each skill independently with sample input
-2. **Integration test**: Run `/audit` on a real GitHub repo README
-3. **Generation test**: Use `/readme` to generate new README for this plugin
+2. **Integration test**: Run `audit` (or `/ai-marketer:audit`) on a real GitHub repo README
+3. **Generation test**: Use `readme` (or `/ai-marketer:readme`) to generate new README for this plugin
 4. **Meta-test**: Use all tools to create marketing for this plugin itself
-5. **Browser test**: Run `/compete` on a competitor product page
+5. **Browser test**: Run `compete` (or `/ai-marketer:compete`) on a competitor product page
 
 ---
 

@@ -562,7 +562,7 @@ Open `.claude/plugins/ai-marketer/hooks/hooks.json`:
           "path": "**/README.md"
         },
         "description": "Remind to audit README",
-        "command": "echo '[AI-Marketer] README updated - run /audit for quality check'"
+        "command": "echo '[AI-Marketer] README updated - run audit (or /ai-marketer:audit) for quality check'"
       }
     ],
     "UserPromptSubmit": [
@@ -571,7 +571,7 @@ Open `.claude/plugins/ai-marketer/hooks/hooks.json`:
           "prompt": "(?i).*(readme|marketing).*"
         },
         "description": "Suggest commands on marketing keywords",
-        "command": "echo '[AI-Marketer] Commands available: /audit, /score, /readme'"
+        "command": "echo '[AI-Marketer] Commands available: audit, score, readme (or /ai-marketer:*)'"
       }
     ]
   }
@@ -593,7 +593,7 @@ Add a new object to the appropriate array:
           "path": "**/*email*.md"
         },
         "description": "Remind to check email copy",
-        "command": "echo '[AI-Marketer] Email content created - score subject lines with /score'"
+        "command": "echo '[AI-Marketer] Email content created - score subject lines with score (or /ai-marketer:score)'"
       }
     ]
   }
@@ -1023,7 +1023,7 @@ If you're still [situation], here's what I'd do:
           "path": "**/README.md"
         },
         "description": "Remind to audit README",
-        "command": "echo '[AI-Marketer] README updated - run /audit for quality check'"
+        "command": "echo '[AI-Marketer] README updated - run audit (or /ai-marketer:audit) for quality check'"
       },
       {
         "matcher": {
@@ -1031,7 +1031,7 @@ If you're still [situation], here's what I'd do:
           "path": "**/*email*.md"
         },
         "description": "Remind to score email subject lines",
-        "command": "echo '[AI-Marketer] Email content created. Run /score on subject lines for optimization.'"
+        "command": "echo '[AI-Marketer] Email content created. Run score (or /ai-marketer:score) on subject lines for optimization.'"
       }
     ]
   }

@@ -39,7 +39,7 @@ Anthropic's CLI tool for interacting with Claude in the terminal. AI Marketer is
 A file that provides context to Claude about a project or plugin. Located at project root or plugin root.
 
 ### Command (Slash Command)
-A user-triggered action invoked with `/name`. Example: `/score`, `/audit`, `/readme`. Defined in the `commands/` folder.
+A user-triggered action invoked with `/plugin-name:command` (e.g., `/ai-marketer:score`, `/ai-marketer:audit`, `/ai-marketer:readme`). Natural language alternatives also work (e.g., `score "headline"`). Defined in the `commands/` folder.
 
 ### Commitment & Consistency
 One of Cialdini's 7 persuasion levers. People honor commitments and act consistently with past behavior. Example: Getting a small "yes" before asking for a big one.

@@ -392,6 +392,8 @@ Now that you've tried these quick wins:
 
 ## Quick Reference Card
 
+### Natural Language (Recommended)
+
 | Command | What It Does | Example |
 |---------|--------------|---------|
 | `score` | Score a headline | `score "Your headline"` |
@@ -399,6 +401,16 @@ Now that you've tried these quick wins:
 | `readme` | Generate README | `readme` |
 | `compete` | Analyze competitor | `compete https://competitor.com` |
 | `voice` | Extract voice | `voice https://github.com/user` |
+
+### Slash Commands (Plugin Registered)
+
+| Slash Command | Example |
+|---------------|---------|
+| `/ai-marketer:score` | `/ai-marketer:score "Your headline"` |
+| `/ai-marketer:audit` | `/ai-marketer:audit https://github.com/user/repo` |
+| `/ai-marketer:readme` | `/ai-marketer:readme` |
+| `/ai-marketer:compete` | `/ai-marketer:compete https://competitor.com` |
+| `/ai-marketer:voice` | `/ai-marketer:voice https://github.com/user` |
 
 ## Tips for Success
 

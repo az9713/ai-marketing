@@ -2,128 +2,175 @@
 
 ## What This Project Is
 
-AI Marketer is a Claude Code plugin that helps developers write better marketing content for their projects. It implements 5 proven marketing psychology frameworks from bestselling books and makes them accessible through simple slash commands.
+AI Marketer is a Claude Code plugin that helps developers write better marketing content for their projects. It implements 5 proven marketing psychology frameworks from bestselling books.
+
+---
+
+## COMMANDS - IMPORTANT
+
+When the user types any of these commands, execute them immediately:
+
+### /score [text]
+
+Score the given headline/copy against the NESB framework (0-40).
+
+**How to score:**
+- **NEW** (0-10): Is it novel? "The first...", "Unlike...", unique mechanism?
+- **EASY** (0-10): Is it effortless? "One-click", "Zero config", "5 minutes"?
+- **SAFE** (0-10): Is it trustworthy? "Trusted by X", testimonials, guarantees?
+- **BIG** (0-10): Is the outcome transformational? "10x", "Dominate", major result?
+
+**Output format:**
+```
+## NESB Score: XX/40
+
+| Dim  | Score | Assessment |
+|------|-------|------------|
+| NEW  | X/10  | [why]      |
+| EASY | X/10  | [why]      |
+| SAFE | X/10  | [why]      |
+| BIG  | X/10  | [why]      |
+
+### Stronger Alternatives
+1. "[improved version]" - XX/40
+2. "[improved version]" - XX/40
+```
+
+**Scoring guide:**
+- 0-15: Weak (generic, forgettable)
+- 16-24: Average (missing dimensions)
+- 25-32: Strong (hits most triggers)
+- 33-40: Exceptional (hits all 4 powerfully)
+
+### /audit [URL or content]
+
+Full marketing audit against all 5 frameworks:
+1. Diagnose awareness level (Schwartz)
+2. Score NESB (Milligan)
+3. Check 7 persuasion levers (Cialdini)
+4. Identify tactical improvements (Yes! 50 Ways)
+5. Assess tribe-building elements (Warren)
+
+Output: Comprehensive report with scores and specific improvements.
+
+### /readme
+
+Generate an optimized GitHub README. Ask the user:
+1. What does your project do?
+2. Who is it for?
+3. What makes it different?
+4. Any social proof (users, stars)?
+
+Then generate a README that:
+- Leads with benefits (not features)
+- Hits all 4 NESB dimensions in the hero
+- Includes social proof section
+- Has quick-start in under 30 seconds
+- Uses loss-aversion framing
+
+### /compete [URL]
+
+Analyze competitor positioning:
+1. Fetch and analyze their website/README
+2. Score their NESB
+3. Identify their persuasion levers
+4. Find gaps in their positioning
+5. Suggest differentiation opportunities
+
+### /voice [URL or content]
+
+Extract voice profile from existing content:
+- Tone (formal/casual)
+- Technical level
+- Sentence patterns
+- Vocabulary preferences
+- Brand personality
+
+Output a voice profile that can be used for future content generation.
+
+---
+
+## The 5 Marketing Frameworks
+
+### Framework 1: Problem Awareness Spectrum (Schwartz)
+
+| Level | Description | Copy Approach |
+|-------|-------------|---------------|
+| **Unaware** | Don't know they have a problem | Lead with the symptom |
+| **Problem Aware** | Know the problem, not solutions | Sell the outcome |
+| **Solution Aware** | Know solutions exist, not yours | Sell your mechanism |
+| **Product Aware** | Know you, not convinced | Sell proof & differentiation |
+| **Most Aware** | Ready to buy | Sell the offer/price |
+
+**Key insight**: Most AI founders pitch "Solution Aware" copy to "Problem Aware" audiences.
+
+### Framework 2: 7 Persuasion Levers (Cialdini)
+
+| Lever | Definition | Application |
+|-------|------------|-------------|
+| **Authority** | People follow experts | Logos, endorsements, credentials |
+| **Social Proof** | People follow crowds | User counts, testimonials |
+| **Commitment** | People honor commitments | Progressive onboarding |
+| **Liking** | People buy from those like them | Relatable brand voice |
+| **Reciprocity** | People return favors | Free value first |
+| **Scarcity** | People want rare things | Limited availability |
+| **Unity** | People join tribes | Shared identity, community |
+
+### Framework 3: Tactical Techniques (Yes! 50 Ways)
+
+Key tactics:
+- **Loss Aversion**: "Stop losing X" > "Gain X" (2x more powerful)
+- **Specific Social Proof**: "10,000 senior engineers" > "thousands of users"
+- **Framing**: "Most developers do X" > "Don't do Y"
+- **Similarity**: Highlight shared identity
+- **Contrast Effect**: Show alternative first
+
+### Framework 4: NESB (Milligan)
+
+Every headline must hit 4 emotional triggers:
+
+| Trigger | Brain Response | Examples |
+|---------|----------------|----------|
+| **NEW** | Craves novelty | "The first...", "Revolutionary" |
+| **EASY** | Conserves energy | "One-click", "Zero config" |
+| **SAFE** | Fears risk | "Trusted by...", "Guaranteed" |
+| **BIG** | Wants transformation | "10x", "Dominate", "Transform" |
+
+### Framework 5: Tribe Building (Warren)
+
+> "People will do anything for those who encourage their dreams, justify their failures, allay their fears, confirm their suspicions, and help throw rocks at their enemies."
+
+| Element | Application |
+|---------|-------------|
+| **Encourage Dreams** | "You can build production AI without a PhD" |
+| **Justify Failures** | "It's not your fault - the tools were too hard" |
+| **Allay Fears** | "You won't break production" |
+| **Confirm Suspicions** | "The old system was rigged" |
+| **Throw Rocks** | Define common enemy: "Legacy gatekeepers" |
+
+---
 
 ## Project Structure
 
 ```
 ai-marketing/
-├── CLAUDE.md                          # This file - project context
+├── CLAUDE.md                          # This file
+├── README.md                          # GitHub README
+├── LICENSE                            # MIT License
 ├── docs/                              # Documentation
-│   ├── gemini3_summary.txt            # Original framework summary
-│   ├── README_transcript.txt          # Source video transcript
-│   └── technical-design.md            # Technical design decisions
-│
+│   ├── user-guide/                    # User documentation
+│   └── developer-guide/               # Developer documentation
 └── .claude/
     └── plugins/
-        └── ai-marketer/               # The main plugin
-            ├── plugin.json            # Plugin manifest
-            ├── CLAUDE.md              # Plugin-specific context
-            ├── README.md              # Plugin README
-            │
-            ├── skills/                # 8 marketing skills
-            │   ├── awareness-analyzer/
-            │   ├── persuasion-auditor/
-            │   ├── copy-optimizer/
-            │   ├── nesb-scorer/
-            │   ├── tribe-builder/
-            │   ├── voice-extractor/
-            │   ├── competitor-analyzer/
-            │   └── content-generator/
-            │
-            ├── agents/                # 3 subagents
-            │   ├── market-researcher.md
-            │   ├── copy-writer.md
-            │   └── content-reviewer.md
-            │
-            ├── commands/              # 5 slash commands
-            │   ├── audit.md
-            │   ├── compete.md
-            │   ├── readme.md
-            │   ├── score.md
-            │   └── voice.md
-            │
-            └── hooks/
-                └── hooks.json         # Automation hooks
+        └── ai-marketer/               # Plugin reference files
+            ├── skills/                # Framework details
+            ├── agents/                # Agent definitions
+            └── commands/              # Command references
 ```
 
-## The 5 Marketing Frameworks
+---
 
-This plugin implements these frameworks:
+## Acknowledgements
 
-1. **Breakthrough Advertising** (Eugene Schwartz)
-   - Problem Awareness Levels: Unaware → Problem Aware → Solution Aware → Product Aware → Most Aware
-   - Market Sophistication Stages: 1 (simple claims) → 5 (identity-based)
-
-2. **Influence** (Robert Cialdini)
-   - 7 Persuasion Levers: Authority, Social Proof, Commitment, Liking, Reciprocity, Scarcity, Unity
-
-3. **Yes! 50 Ways to Be Persuasive** (Cialdini et al)
-   - Tactical techniques: Framing, Specific Social Proof, Loss Aversion, Similarity, Commitment Ladder
-
-4. **Take Their Money** (Kyle Milligan)
-   - NESB Framework: Every piece of copy should hit NEW, EASY, SAFE, BIG
-
-5. **One Sentence Persuasion** (Blair Warren)
-   - 5 elements: Encourage dreams, Justify failures, Allay fears, Confirm suspicions, Throw rocks at enemies
-
-## Key Commands
-
-- `/score "headline"` - Quick NESB scoring (0-40)
-- `/audit URL` - Full marketing audit against all frameworks
-- `/readme` - Generate optimized GitHub README
-- `/compete URL` - Analyze competitor positioning
-- `/voice URL` - Extract voice patterns from existing content
-
-## Development Guidelines
-
-### When Modifying Skills
-- Each skill has a SKILL.md with frontmatter (name, description, allowed-tools)
-- Supporting files provide reference material (loaded via progressive disclosure)
-- Keep instructions actionable and specific
-
-### When Modifying Agents
-- Agents have model specification (sonnet/haiku)
-- Define clear trigger conditions
-- Specify allowed tools explicitly
-
-### When Modifying Commands
-- Commands are user-invoked via `/command-name`
-- Keep command names short and memorable
-- Provide clear usage examples
-
-## Content Generation Principles
-
-When generating marketing content:
-1. Always determine audience awareness level first
-2. Score headlines against NESB before presenting
-3. Include at least 3 persuasion levers
-4. Use loss aversion framing where possible
-5. Match the user's voice if a profile exists
-
-## Testing
-
-To test the plugin:
-1. Use `/score` on sample headlines
-2. Run `/audit` on a real GitHub repo
-3. Generate content with `/readme`
-4. Verify framework scores meet quality thresholds (NESB > 25/40)
-
-## Common Tasks
-
-### Adding a New Skill
-1. Create directory in `skills/`
-2. Add SKILL.md with frontmatter
-3. Add supporting files as needed
-4. Reference in plugin documentation
-
-### Adding a New Command
-1. Create command.md in `commands/`
-2. Define name and description in frontmatter
-3. Document usage and examples
-4. Test with various inputs
-
-### Updating Framework Reference
-1. Edit `.claude/plugins/ai-marketer/CLAUDE.md`
-2. Update relevant skill files
-3. Ensure consistency across all references
+- Inspired by: ["These 5 Books Reveal Why Most AI Products Don't Sell"](https://www.youtube.com/watch?v=OLjTWl4Ci10)
+- Generated by: [Claude Code](https://claude.ai/code) + Claude Opus 4.5

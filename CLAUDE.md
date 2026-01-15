@@ -10,15 +10,24 @@ AI Marketer is a Claude Code plugin that helps developers write better marketing
 
 When the user asks to score, audit, generate a readme, analyze competitors, or extract voice, execute these commands immediately.
 
-**Two ways to use commands:**
+**Two ways to invoke commands (both produce identical results):**
 
-| Natural Language | Slash Command (plugin registered) |
-|------------------|-----------------------------------|
+| Method | Syntax | How It Works |
+|--------|--------|--------------|
+| **Natural Language** | `score "headline"` | Claude uses this CLAUDE.md file for instructions |
+| **Slash Command** | `/ai-marketer:score "headline"` | Claude loads `commands/score.md` from the plugin |
+
+Both methods produce the same results because this CLAUDE.md file (which contains the full framework) is always loaded when Claude enters this project directory.
+
+| Natural Language | Slash Command |
+|------------------|---------------|
 | `score "headline"` | `/ai-marketer:score "headline"` |
 | `audit https://...` | `/ai-marketer:audit https://...` |
 | `readme` | `/ai-marketer:readme` |
 | `compete https://...` | `/ai-marketer:compete https://...` |
 | `voice https://...` | `/ai-marketer:voice https://...` |
+
+*For detailed explanation, see [Invocation Explained](docs/developer-guide/invocation-explained.md).*
 
 ---
 

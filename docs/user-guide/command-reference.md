@@ -4,6 +4,29 @@ This document provides detailed reference information for all AI Marketer comman
 
 ---
 
+## How Commands Work
+
+There are two ways to invoke any command:
+
+| Method | Syntax | Mechanism |
+|--------|--------|-----------|
+| **Natural Language** | `score "headline"` | Claude uses CLAUDE.md instructions |
+| **Slash Command** | `/ai-marketer:score "headline"` | Claude loads `commands/score.md` |
+
+### Are the results different?
+
+**No.** Both methods produce identical results because:
+
+1. **CLAUDE.md is always loaded** when Claude enters the project directory
+2. CLAUDE.md contains the complete framework instructions
+3. Both methods have access to the same scoring knowledge
+
+The slash command formally invokes the plugin command file, while natural language relies on CLAUDE.md directly. The output is the same.
+
+*For technical details, see [Invocation Explained](../developer-guide/invocation-explained.md).*
+
+---
+
 ## Quick Reference Table
 
 | Command | Purpose | Input | Output |

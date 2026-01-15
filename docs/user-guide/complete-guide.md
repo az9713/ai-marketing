@@ -278,9 +278,17 @@ Unite against a common enemy.
 
 ## All Commands Explained
 
-You can use commands in two ways:
-- **Natural language** (recommended): `score "headline"`
-- **Slash command** (plugin registered): `/ai-marketer:score "headline"`
+### Two Invocation Methods (Same Results)
+
+| Method | Example | How It Works |
+|--------|---------|--------------|
+| **Natural Language** | `score "headline"` | Claude uses CLAUDE.md instructions |
+| **Slash Command** | `/ai-marketer:score "headline"` | Claude loads `commands/score.md` |
+
+**Both produce identical results** because CLAUDE.md (which contains the full framework) is always loaded when Claude enters the project directory.
+
+- Use **natural language** for quick, conversational use
+- Use **slash commands** for explicit invocation or automation
 
 ---
 

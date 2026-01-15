@@ -24,7 +24,19 @@ cd /path/to/ai-marketing
 claude
 ```
 
-**What to expect**: Claude reads the CLAUDE.md file which contains all framework instructions. You can use commands via natural language (recommended) or slash commands if the plugin is registered.
+**What to expect**: Claude reads the CLAUDE.md file which contains all framework instructions.
+
+### Two Ways to Invoke Commands
+
+| Method | Example | How It Works |
+|--------|---------|--------------|
+| **Natural Language** | `score "headline"` | Claude uses CLAUDE.md instructions directly |
+| **Slash Command** | `/ai-marketer:score "headline"` | Claude loads `commands/score.md` from the plugin |
+
+**Both methods produce identical results.** This is because CLAUDE.md (which contains the full scoring framework) is always loaded when Claude enters the project directory.
+
+- **Natural language** is recommended for quick use
+- **Slash commands** are formal plugin commands (useful for automation or explicit invocation)
 
 **Verify it works** by typing: `score "test headline"`
 

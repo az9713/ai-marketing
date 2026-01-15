@@ -383,9 +383,10 @@ Each should score at least 25/40 on NESB.
 
 Now that you've tried these quick wins:
 
-1. **Go deeper**: Read the [Complete User Guide](./complete-guide.md)
-2. **Understand the frameworks**: See [Frameworks Explained](./frameworks-explained.md)
-3. **Learn all commands**: Check the [Command Reference](./command-reference.md)
+1. **See real examples**: Check the [Test Results](../test-results.md) for detailed outputs with mock data
+2. **Go deeper**: Read the [Complete User Guide](./complete-guide.md)
+3. **Understand the frameworks**: See [Frameworks Explained](./frameworks-explained.md)
+4. **Learn all commands**: Check the [Command Reference](./command-reference.md)
 
 ## Quick Reference Card
 

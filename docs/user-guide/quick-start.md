@@ -745,9 +745,53 @@ What's one thing that worked for you that "shouldn't" work?
 
 **The Problem**: You want automatic quality reminders when you write marketing content.
 
-**The Solution**: The plugin has hooks that trigger automatically.
+**The Solution**: Configure hooks in your settings file to trigger automatically.
 
-**Demo 1: PostToolUse Hook (README)**
+**Setup Required**:
+
+Hooks must be defined in `.claude/settings.local.json` (not a separate hooks.json file).
+
+**For Windows (PowerShell):**
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Write-Output '{\\\"systemMessage\\\": \\\"[AI-Marketer] File written - consider running /ai-marketer:audit\\\"}'\""
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**For macOS/Linux (Bash):**
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"[AI-Marketer] File written - consider running /ai-marketer:audit\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Demo: PostToolUse Hook (README)**
 
 When you ask Claude to write a README:
 ```
@@ -756,28 +800,28 @@ Write a README.md for my project in the current folder
 
 After the file is written, you'll see:
 ```
-[AI-Marketer] README written - consider running audit
-(or /ai-marketer:audit) for quality check
+PostToolUse:Write says: [AI-Marketer] File written - consider running /ai-marketer:audit
 ```
 
-**Demo 2: UserPromptSubmit Hook**
-
-When you mention marketing topics:
-```
-I need help with my landing page copy
-```
-
-Before Claude responds, you'll see:
-```
-[AI-Marketer] Marketing content detected. Available commands:
-audit, score, readme, compete, voice (or /ai-marketer:*)
-```
+**Key Insight**: Output JSON with `{"systemMessage": "..."}` to get clean "says:" notifications instead of error messages.
 
 **What You Learned**: Hooks provide automatic reminders and quality gates.
 
-**Hooks Used**:
-- ⚡ `PostToolUse` — Triggers after file writes
-- ⚡ `UserPromptSubmit` — Triggers when marketing keywords detected
+**Hook Configuration Details**:
+- Hooks go in `.claude/settings.local.json` (personal) or `.claude/settings.json` (shared)
+- `matcher` is a string matching tool names (e.g., `"Write"`, `"Write|Edit"`)
+- `hooks` array contains command objects with `type` and `command` fields
+- Use `systemMessage` JSON output for visible, non-error notifications
+- Restart Claude Code after editing settings for hooks to take effect
+- Run `/hooks` to verify your hooks are registered
+
+**Exit Code Behavior**:
+| Exit Code | Behavior |
+|-----------|----------|
+| 0 + stdout | Only shown in transcript mode (Ctrl+O) |
+| 0 + JSON `systemMessage` | Shows as "says:" notification (recommended) |
+| 1 | Shows as "hook error" |
+| 2 | Shows as "blocking error" |
 
 ---
 
@@ -992,12 +1036,15 @@ Now that you've tried these quick wins:
 | `competitor-analyzer` | Analyze competitor positioning | (used by `compete` command) |
 | `content-generator` | Generate optimized content | "Generate landing page copy" |
 
-### Hooks (2)
+### Hooks (Optional)
 
-| Hook | When It Fires | What It Does |
-|------|---------------|--------------|
-| `PostToolUse` | After writing README.md or landing pages | Suggests running audit/score |
-| `UserPromptSubmit` | When you mention marketing keywords | Reminds about available commands |
+Hooks are configured in `.claude/settings.local.json`, not bundled with the plugin.
+
+| Hook Type | When It Fires | Example Use |
+|-----------|---------------|-------------|
+| `PostToolUse` | After any tool completes | Remind to audit after Write |
+
+See [Use Case 17](#use-case-17-watch-hooks-in-action-automation) for setup instructions.
 
 ### Slash Commands (Plugin Registered)
 

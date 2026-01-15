@@ -4,6 +4,7 @@ description: Review and score marketing content against all 5 frameworks
 model: haiku
 allowed-tools:
   - Read
+  - Write
   - Glob
 ---
 
@@ -73,6 +74,24 @@ Score each of 7 levers 0-10:
 - 9-10: Perfect match to audience awareness
 
 ## Output Format
+
+### File Output (REQUIRED)
+
+**You MUST save review reports to a file.** Use the Write tool to save to:
+
+```
+./generated/review-[content-type]-[timestamp].md
+```
+
+Examples:
+- `./generated/review-readme-2024-01-15.md`
+- `./generated/review-landing-page-2024-01-15.md`
+
+**Why**: Reviews are reference documents for revisions. Users need to access scores and recommendations later.
+
+---
+
+### Report Structure
 
 ```markdown
 ## Content Review Report

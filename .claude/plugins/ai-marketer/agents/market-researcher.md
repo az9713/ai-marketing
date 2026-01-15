@@ -4,6 +4,7 @@ description: Deep market and competitive research using browser automation
 model: sonnet
 allowed-tools:
   - Read
+  - Write
   - WebFetch
   - Task
   - Grep
@@ -57,6 +58,24 @@ When researching a market:
 - **Audience awareness**: What level are most customers at
 
 ## Output Format
+
+### File Output (REQUIRED)
+
+**You MUST save research reports to a file.** Use the Write tool to save to:
+
+```
+./generated/research-[topic]-[timestamp].md
+```
+
+Examples:
+- `./generated/research-ai-coding-market-2024-01-15.md`
+- `./generated/research-competitor-analysis-2024-01-15.md`
+
+**Why**: Research is a reference document. Users need to access it later without scrolling through terminal history.
+
+---
+
+### Report Structure
 
 Always return structured reports:
 

@@ -1,132 +1,132 @@
-# AI Marketing
+# AI Marketer
 
-**A Claude Code plugin that applies 5 proven marketing psychology frameworks to help AI products get noticed.**
+**Your Product Hunt launch is about to flop. Here's why.**
+
+That headline you spent an hour on? It scores 15/40 on psychological effectiveness. Generic. Forgettable. Skipped.
+
+This Claude Code plugin scores your copy against the same 4 triggers behind $100M campaigns — and rewrites it in seconds.
 
 [![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-Plugin-7C3AED)](https://claude.ai)
-[![Based on 5 Bestselling Books](https://img.shields.io/badge/Based_on-5_Bestselling_Books-green)](https://github.com)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
-## What This Is
+---
 
-Most AI product copy sounds the same: *"AI-powered solution for..."* — generic, forgettable, ignored.
+## 30-Second Demo
 
-This Claude Code plugin brings 5 battle-tested marketing frameworks into your workflow, so your GitHub READMEs, landing pages, and social posts actually convert.
+```bash
+$ score "An AI-powered tool that helps developers code faster"
 
-## The 5 Frameworks
+## NESB Score: 14/40 ❌ (Weak)
 
-| Framework | Source | What It Does |
-|-----------|--------|--------------|
-| **Problem Awareness Spectrum** | *Breakthrough Advertising* (Schwartz) | Match copy to audience awareness level |
-| **7 Persuasion Levers** | *Influence* (Cialdini) | Engineer psychological triggers |
-| **50 Tactical Techniques** | *Yes! 50 Ways* (Cialdini et al.) | Apply evidence-based persuasion |
-| **NESB Scoring** | *Take Their Money* (Milligan) | Hit NEW, EASY, SAFE, BIG in every headline |
-| **Tribe Building** | *One Sentence Persuasion* (Warren) | Create movements, not just products |
+| Dim  | Score | Issue                    |
+|------|-------|--------------------------|
+| NEW  | 3/10  | Generic "AI-powered"     |
+| EASY | 4/10  | No ease claim            |
+| SAFE | 3/10  | Zero social proof        |
+| BIG  | 4/10  | Vague "faster"           |
+
+### Try Instead:
+"Stop mass-deleting AI slop. Ship production code in one prompt."
+Score: 34/40 ✅
+```
+
+One command. Instant diagnosis. Copy you can steal.
+
+---
+
+## What NESB Means
+
+Every headline that converts hits 4 brain triggers:
+
+| Trigger | Your Brain Wants | High-Score Example |
+|---------|------------------|-------------------|
+| **N**ew | Novelty | "The first..." / "Unlike..." |
+| **E**asy | Low effort | "One click" / "Zero config" |
+| **S**afe | Trust | "Trusted by 10,000..." |
+| **B**ig | Transformation | "10x faster" / "Dominate" |
+
+Miss one? Your copy gets ignored.
+
+---
+
+## 5 Commands
+
+| Command | What It Does |
+|---------|--------------|
+| `score "text"` | Rate any headline 0-40 with fixes |
+| `audit URL` | Full marketing teardown (5 frameworks) |
+| `readme` | Generate high-converting README |
+| `compete URL` | Find competitor positioning gaps |
+| `voice URL` | Extract writing style for consistency |
+
+Based on: *Breakthrough Advertising* (Schwartz), *Influence* (Cialdini), *Take Their Money* (Milligan), *Yes! 50 Ways* (Goldstein), *One Sentence Persuasion* (Warren).
+
+---
 
 ## Quick Start
 
 ```bash
-# Clone this repo
 git clone https://github.com/az9713/ai-marketing.git
-
-# Navigate to the project
 cd ai-marketing
-
-# Start Claude Code
 claude
-
-# Try it out (natural language)
-score "Your headline here"
 ```
 
-## Using the Commands
+Then: `score "your headline"`
 
-You can use commands in two ways:
-
-### Option 1: Natural Language (Recommended)
-
-Just type what you want:
-
-```
-score "Your headline here"
-audit this readme
-generate a readme for my project
-analyze competitor https://example.com
-extract my writing voice from this text
-```
-
-### Option 2: Slash Commands
-
-If you register the plugin with `claude --plugin-dir "./.claude/plugins/ai-marketer"`:
-
-| Command | What It Does |
-|---------|--------------|
-| `/ai-marketer:score` | Score a headline against NESB (0-40) |
-| `/ai-marketer:audit` | Full marketing audit of any URL |
-| `/ai-marketer:readme` | Generate an optimized README |
-| `/ai-marketer:compete` | Analyze competitor positioning |
-| `/ai-marketer:voice` | Extract your writing voice |
-
-## Documentation
-
-- **[Quick Start Guide](docs/user-guide/quick-start.md)** — 10 hands-on examples
-- **[Complete User Guide](docs/user-guide/complete-guide.md)** — All features explained
-- **[Frameworks Explained](docs/user-guide/frameworks-explained.md)** — Deep dive into each framework
-- **[Command Reference](docs/user-guide/command-reference.md)** — Detailed command docs
-- **[Developer Guide](docs/developer-guide/getting-started.md)** — Contribute to the plugin
-
-## Example
-
-**Before** (NESB Score: 14/40):
-> "An AI-powered development tool that helps developers write better code faster."
-
-**After** (NESB Score: 35/40):
-> "Stop losing hours to debugging. Join 10,000 senior engineers who ship 3x faster with context-aware AI."
-
-## Project Structure
-
-```
-ai-marketing/
-├── CLAUDE.md                      # Framework context (auto-loaded)
-├── .claude/plugins/ai-marketer/   # The plugin
-│   ├── .claude-plugin/            # Plugin manifest
-│   │   └── plugin.json
-│   ├── skills/                    # 8 marketing skills
-│   ├── agents/                    # 3 subagents
-│   ├── commands/                  # 5 slash commands
-│   └── hooks/                     # Auto-review triggers
-└── docs/                          # Documentation
-    ├── user-guide/                # For users
-    └── developer-guide/           # For contributors
-```
-
-## Acknowledgements
-
-This project stands on the shoulders of giants:
-
-### Inspiration
-
-This work was inspired by the YouTube video ["These 5 Books Reveal Why Most AI Products Don't Sell"](https://www.youtube.com/watch?v=OLjTWl4Ci10), which brilliantly synthesized decades of marketing wisdom into actionable frameworks for AI builders.
-
-### The 5 Books
-
-- **Breakthrough Advertising** by Eugene Schwartz
-- **Influence: The Psychology of Persuasion** by Robert Cialdini
-- **Yes! 50 Scientifically Proven Ways to Be Persuasive** by Cialdini, Goldstein & Martin
-- **Take Their Money** by Kyle Milligan
-- **The One Sentence Persuasion Course** by Blair Warren
-
-### Built With AI
-
-All code and documentation in this project were generated by [Claude Code](https://claude.ai/code) powered by Claude Opus 4.5. This project is itself a demonstration of human-AI collaboration in software development.
-
-## Contributing
-
-Contributions welcome! See the [Developer Guide](docs/developer-guide/getting-started.md) to get started.
-
-## License
-
-MIT - Use it, modify it, share it.
+No API keys. No config. No marketing degree.
 
 ---
 
-*Stop writing copy that blends in. Start converting.*
+## Before / After
+
+| Before | After |
+|--------|-------|
+| "An AI-powered development tool that helps developers write better code faster." | "Stop mass-deleting AI slop. Join 10,000 engineers who ship production code in one prompt." |
+| **14/40** — Generic, no proof, vague | **35/40** — Loss aversion, social proof, specific outcome |
+
+---
+
+## Who This Is For
+
+**Indie hackers and founders** who:
+- Launch products that get ignored despite being technically superior
+- Write "AI-powered solution for..." copy (we've all done it)
+- Know their product is good but can't articulate *why* it matters
+
+**It's not your fault.** Dev tools teach you to build, not to sell. This fixes that.
+
+---
+
+## What's Included
+
+- **5 Commands** — Score, audit, generate, analyze, extract
+- **3 Agents** — Research, content generation, review
+- **8 Skills** — Deep framework implementations
+- **Optional Hooks** — Configure auto-reminders in `.claude/settings.local.json`
+
+Full docs: [Quick Start](docs/user-guide/quick-start.md) | [Frameworks](docs/user-guide/frameworks-explained.md) | [Commands](docs/user-guide/command-reference.md)
+
+---
+
+## The Psychology
+
+> "People will do anything for those who encourage their dreams, justify their failures, allay their fears, confirm their suspicions, and help them throw rocks at their enemies."
+> — Blair Warren
+
+This plugin doesn't generate copy. It engineers persuasion.
+
+---
+
+## License
+
+MIT — Use it, fork it, ship it.
+
+---
+
+**Stop blending in.**
+
+```bash
+git clone https://github.com/az9713/ai-marketing.git && cd ai-marketing && claude
+```
+
+*Your next launch deserves better copy.*

@@ -265,10 +265,9 @@ Claude should mention the 5 commands: `score`, `audit`, `readme`, `compete`, and
 │   ├── score.md               # /ai-marketer:score
 │   ├── compete.md             # /ai-marketer:compete
 │   └── voice.md               # /ai-marketer:voice
-│
-└── hooks/
-    └── hooks.json             # Event triggers
 ```
+
+**Note**: Hooks are configured in `.claude/settings.local.json`, not in the plugin directory.
 
 ### Key Files Explained
 
@@ -282,10 +281,11 @@ The plugin manifest. Tells Claude Code what's in the plugin.
   "description": "Marketing frameworks plugin",
   "skills": "skills",      // Points to skills folder
   "agents": "agents",      // Points to agents folder
-  "commands": "commands",  // Points to commands folder
-  "hooks": "hooks/hooks.json"
+  "commands": "commands"   // Points to commands folder
 }
 ```
+
+**Note**: Hooks are not defined in plugin.json. They are configured separately in `.claude/settings.local.json`.
 
 #### SKILL.md Files
 Each skill has a `SKILL.md` file with frontmatter:
@@ -519,24 +519,53 @@ For detailed examples, see [examples.md](./examples.md).
 
 ### Modifying Hooks
 
-Edit `hooks/hooks.json`:
+Edit `.claude/settings.local.json` (not in the plugin directory):
+
+**For Windows (PowerShell):**
 
 ```json
 {
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": {
-          "tool": "Write",
-          "path": "**/README.md"
-        },
-        "description": "What this hook does",
-        "command": "echo 'Hook triggered'"
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Write-Output '{\\\"systemMessage\\\": \\\"Hook triggered\\\"}'\""
+          }
+        ]
       }
     ]
   }
 }
 ```
+
+**For macOS/Linux (Bash):**
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Hook triggered\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Important Notes**:
+- Restart Claude Code for hook changes to take effect
+- Run `/hooks` to verify your hook is registered
+- Use `{"systemMessage": "..."}` JSON output for visible notifications
+- Without `systemMessage`, output only shows in transcript mode (Ctrl+O)
 
 ---
 
@@ -571,7 +600,7 @@ Now that you have your environment set up:
 | Skills | `.claude/plugins/ai-marketer/skills/` |
 | Agents | `.claude/plugins/ai-marketer/agents/` |
 | Commands | `.claude/plugins/ai-marketer/commands/` |
-| Hooks | `.claude/plugins/ai-marketer/hooks/hooks.json` |
+| Hooks | `.claude/settings.local.json` (project-level) |
 
 ### Common Commands
 | Task | Command |

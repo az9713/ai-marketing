@@ -111,6 +111,79 @@ Output a voice profile that can be used for future content generation.
 
 ---
 
+## AGENT DELEGATION - IMPORTANT
+
+For complex tasks, you MUST use the Task tool to spawn specialized agents instead of handling requests directly. This ensures focused context, consistent output format, and proper framework application.
+
+### copy-writer agent
+
+**You MUST spawn this agent when user requests**:
+- Multiple content pieces in one request (e.g., README + tweets + LinkedIn post)
+- "Launch kit", "content kit", or "batch content" generation
+- Content generation with voice matching requirement
+- Any request matching Use Case 12 from docs/user-guide/quick-start.md
+
+**How to spawn**:
+```
+Task tool with:
+  subagent_type: Use the agent file or a general-purpose agent with the copy-writer.md content
+  prompt: Include product details, voice profile (if extracted), all content types needed
+```
+
+**Example trigger phrases**:
+- "Generate a complete launch content kit..."
+- "Create README, tweets, and LinkedIn post for..."
+- "Write multiple content pieces using my voice..."
+
+### market-researcher agent
+
+**You MUST spawn this agent when user requests**:
+- Multi-competitor analysis (3+ competitors)
+- "Research the market", "analyze top competitors"
+- Deep competitive intelligence requiring browser automation
+- Any request matching Use Case 11 from docs/user-guide/quick-start.md
+
+**Example trigger phrases**:
+- "Research the top 5 competitors in..."
+- "Analyze the AI coding assistant market..."
+- "Give me positioning gaps across competitors..."
+
+### content-reviewer agent
+
+**You MUST spawn this agent when user requests**:
+- Review content against "all frameworks" or "all 5 frameworks"
+- Quality gate before publishing with verdict (APPROVE/REVISE/REWRITE)
+- Comprehensive framework audit of generated content
+- Any request matching Use Case 13 from docs/user-guide/quick-start.md
+
+**Example trigger phrases**:
+- "Review this against all 5 marketing frameworks..."
+- "Score this content before I publish..."
+- "Give me a quality verdict on this copy..."
+
+### Rule
+
+**If the user's request matches any agent trigger conditions above, you MUST spawn the agent using the Task tool rather than handling it directly in the main conversation.**
+
+Agent files are located at: `.claude/plugins/ai-marketer/agents/`
+
+### After Agent Completes
+
+When an agent returns content:
+
+1. **Display full output** — Do NOT summarize. The user needs to see all generated content, not a summary table.
+
+2. **Reference the saved file** — Agents save deliverables to `./generated/`. Tell the user where the file is located.
+
+3. **For content generation specifically**:
+   - Show all drafts with their NESB scores
+   - Clearly mark the recommended draft
+   - Provide copy-paste ready versions
+
+**Why this matters**: Agent output is the deliverable. Summarizing it defeats the purpose of generating content.
+
+---
+
 ## The 5 Marketing Frameworks
 
 ### Framework 1: Problem Awareness Spectrum (Schwartz)

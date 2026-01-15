@@ -211,49 +211,84 @@ Natural language alternatives (e.g., `score "headline"`) also work when CLAUDE.m
 
 Hooks **trigger automatically** on events. They run in the background.
 
+**Important**: Hooks are configured in `.claude/settings.local.json` or `.claude/settings.json`, not in the plugin.
+
 #### Available Events
 
 | Event | When It Fires |
 |-------|--------------|
 | `PostToolUse` | After any tool completes |
-| `UserPromptSubmit` | When user sends a message |
+| `PreToolUse` | Before a tool runs |
+| `Notification` | On notifications |
+| `Stop` | When session ends |
 
 #### Hook Configuration
+
+**For Windows (PowerShell):**
 
 ```json
 {
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": {
-          "tool": "Write",
-          "path": "**/README.md"
-        },
-        "description": "Remind to audit README",
-        "command": "echo '[AI-Marketer] README written - consider audit or /ai-marketer:audit'"
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": {
-          "prompt": "(?i).*(readme|marketing).*"
-        },
-        "description": "Suggest commands on keywords",
-        "command": "echo '[AI-Marketer] Available: audit, score, readme (or /ai-marketer:*)'"
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Write-Output '{\\\"systemMessage\\\": \\\"[AI-Marketer] File written - consider running /ai-marketer:audit\\\"}'\""
+          }
+        ]
       }
     ]
   }
 }
 ```
 
-#### Matcher Types
+**For macOS/Linux (Bash):**
 
-**Tool matchers** (for PostToolUse):
-- `tool`: Which tool (e.g., "Write", "Read")
-- `path`: File pattern (glob, e.g., "**/README.md")
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"[AI-Marketer] File written - consider running /ai-marketer:audit\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
-**Prompt matchers** (for UserPromptSubmit):
-- `prompt`: Regex pattern to match user input
+#### Hook Format
+
+- `matcher`: String pattern matching tool names (e.g., `"Write"`, `"Write|Edit"`, `"*"` for all)
+- `hooks`: Array of hook objects
+- `type`: Either `"command"` (shell) or `"prompt"` (LLM-based)
+- `command`: The shell command to execute
+- `timeout`: Optional timeout in seconds (default: 60)
+
+#### Making Hook Messages Visible
+
+Output JSON with `{"systemMessage": "..."}` to show notifications without error labels:
+
+```
+PostToolUse:Write says: [AI-Marketer] File written - consider running /ai-marketer:audit
+```
+
+**Exit Code Behavior:**
+| Exit Code | Behavior |
+|-----------|----------|
+| 0 + stdout | Only shown in transcript mode (Ctrl+O) |
+| 0 + JSON `systemMessage` | Shows as "says:" notification (recommended) |
+| 1 | Shows as "hook error" |
+| 2 | Shows as "blocking error" |
+
+**After editing hooks**: Restart Claude Code and run `/hooks` to verify registration.
 
 ---
 
@@ -541,9 +576,11 @@ To add a new content type (e.g., YouTube descriptions):
 
 To add a new automatic trigger:
 
-1. **Edit hooks/hooks.json**
-2. **Add matcher** for the event you want to catch
+1. **Edit `.claude/settings.local.json`** (or `.claude/settings.json`)
+2. **Add hook** with matcher for the tool you want to catch
 3. **Add command** that runs when triggered
+
+See [Hooks: The Automation Layer](#hooks-the-automation-layer) for format details.
 
 ### Adding a New Agent
 

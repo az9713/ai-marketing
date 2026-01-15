@@ -286,29 +286,65 @@ Test these edge cases:
 
 **Goal**: Verify matcher patterns work correctly.
 
+**Setup**: Configure hooks in `.claude/settings.local.json`:
+
+For Windows (PowerShell):
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [{
+          "type": "command",
+          "command": "powershell -Command \"Write-Output '{\\\"systemMessage\\\": \\\"Hook triggered\\\"}'\""
+        }]
+      }
+    ]
+  }
+}
+```
+
+For macOS/Linux (Bash):
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [{
+          "type": "command",
+          "command": "echo '{\"systemMessage\": \"Hook triggered\"}'"
+        }]
+      }
+    ]
+  }
+}
+```
+
 **Steps for PostToolUse**:
 
-1. Test exact match:
+1. Restart Claude Code after editing settings
+2. Run `/hooks` to verify hook is registered
+3. Test tool matching:
    ```
-   Write README.md  → Should trigger
-   Write readme.md  → Should/shouldn't trigger (case sensitivity)
-   Write OTHER.md   → Should NOT trigger
-   ```
-
-2. Test glob patterns:
-   ```
-   Write folder/README.md  → Should trigger (**)
-   Write deep/nested/README.md → Should trigger (**)
+   Write any file  → Should see: "PostToolUse:Write says: Hook triggered"
+   Edit any file   → Should NOT trigger
    ```
 
-**Steps for UserPromptSubmit**:
+4. Test combined matchers (change matcher to `"Write|Edit"`):
+   ```
+   Write file → Should trigger
+   Edit file  → Should trigger
+   Read file  → Should NOT trigger
+   ```
 
-1. Test regex matches:
-   ```
-   "help with readme" → Should trigger (?i).*readme.*
-   "help with README" → Should trigger (case insensitive)
-   "help with file" → Should NOT trigger
-   ```
+**Expected Output Format**:
+```
+PostToolUse:Write says: Hook triggered
+```
+
+If you see "hook error" or "blocking error" instead, check your exit code and `systemMessage` JSON format.
 
 ### Hook Non-Interference Test
 
@@ -432,7 +468,7 @@ After any change, test:
 | Any skill | All commands that might use it |
 | A command | That specific command thoroughly |
 | An agent | Tasks that delegate to it |
-| hooks.json | All hook triggers |
+| settings.local.json hooks | All hook triggers |
 | plugin.json | Plugin loading entirely |
 
 ---
@@ -482,10 +518,10 @@ After any change, test:
 - No hook behavior
 
 **Checks**:
-1. Verify hooks.json syntax (valid JSON)
-2. Check matcher pattern
+1. Verify `.claude/settings.local.json` syntax (valid JSON)
+2. Check matcher pattern (should be a string like `"Write"`)
 3. Verify event is actually occurring
-4. Test pattern separately
+4. Restart Claude Code to pick up settings changes
 
 ### Unexpected Output
 

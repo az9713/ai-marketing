@@ -86,7 +86,7 @@ A pattern for matching file paths. Example: `**/README.md` matches any README.md
 ## H
 
 ### Hook
-An automatic trigger that fires on specific events. Types: PostToolUse (after tool completes), UserPromptSubmit (when user sends message). Defined in `hooks/hooks.json`.
+An automatic trigger that fires on specific events. Types: PostToolUse (after tool completes), PreToolUse (before tool runs), Notification, Stop. Defined in `.claude/settings.local.json` or `.claude/settings.json`. For visible notifications, output JSON with `{"systemMessage": "..."}` — displays as "says:" message.
 
 ---
 
@@ -113,7 +113,7 @@ A psychological principle: people work harder to avoid losses than to achieve ga
 From Eugene Schwartz: how exposed your market is to claims like yours. Five stages, from virgin market (simple claims work) to exhausted (need to sell identity).
 
 ### Matcher
-The pattern that determines when a hook fires. Can match tools, file paths, or user prompts.
+A string pattern that determines when a hook fires. Matches tool names (e.g., `"Write"`, `"Write|Edit"`).
 
 ### Mechanism
 Your unique approach to solving a problem. What makes your solution different. For Solution Aware audiences.
@@ -148,7 +148,7 @@ A bundle of skills, agents, commands, and hooks that extends Claude Code. Define
 The manifest file that tells Claude Code what's in a plugin. Specifies paths to skills, agents, commands, and hooks.
 
 ### PostToolUse
-A hook event that fires after any tool completes. Can match specific tools and file paths.
+A hook event that fires after any tool completes. Matcher is a string pattern matching tool names (e.g., `"Write"`).
 
 ### Problem Aware
 An awareness level where the audience knows they have a problem but doesn't know solutions exist. Approach: Sell the outcome/solution.
@@ -194,6 +194,9 @@ See Agent. A specialized worker that Claude delegates tasks to.
 ### Supporting File
 Additional files in a skill folder that provide detailed reference material. Loaded on-demand for progressive disclosure.
 
+### systemMessage
+A JSON field used in hook command output to display visible notifications. When a hook outputs `{"systemMessage": "text"}`, Claude Code displays it as "says: text" instead of showing error labels. Required for user-facing hook notifications.
+
 ---
 
 ## T
@@ -212,7 +215,7 @@ An awareness level where the audience doesn't even know they have a problem. App
 One of Cialdini's 7 persuasion levers. People identify with and trust their tribe. Example: "For indie hackers who refuse to play corporate games."
 
 ### UserPromptSubmit
-A hook event that fires when the user sends a message. Can match patterns in the user's input.
+A hook event that fires when the user sends a message. **Note**: Check Claude Code documentation for current hook types; standard types are PostToolUse, PreToolUse, Notification, and Stop.
 
 ---
 

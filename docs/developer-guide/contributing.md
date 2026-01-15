@@ -374,7 +374,7 @@ All contributors are recognized in:
 | Skill | `.claude/plugins/ai-marketer/skills/[name]/SKILL.md` |
 | Command | `.claude/plugins/ai-marketer/commands/[name].md` |
 | Agent | `.claude/plugins/ai-marketer/agents/[name].md` |
-| Hook | `.claude/plugins/ai-marketer/hooks/hooks.json` |
+| Hook | `.claude/settings.local.json` (project-level settings) |
 | User docs | `docs/user-guide/` |
 | Dev docs | `docs/developer-guide/` |
 

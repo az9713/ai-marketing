@@ -157,9 +157,10 @@ These aren't random marketing tips. They're the distilled wisdom from 5 bestsell
 │   └── plugin.json
 ├── skills/           # 8 specialized marketing skills
 ├── agents/           # 3 subagents for complex tasks
-├── commands/         # 5 slash commands
-└── hooks/            # Auto-review triggers
+└── commands/         # 5 slash commands
 ```
+
+**Note**: Hooks are configured in `.claude/settings.local.json` at the project root, not in the plugin.
 
 ## Installation
 

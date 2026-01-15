@@ -548,80 +548,103 @@ Add a hook when you want something to happen automatically in response to an eve
 
 ### Step-by-Step
 
-#### Step 1: Edit hooks.json
+#### Step 1: Edit Settings File
 
-Open `.claude/plugins/ai-marketer/hooks/hooks.json`:
+**Important**: Hooks are configured in `.claude/settings.local.json` (or `.claude/settings.json`), not in the plugin directory.
+
+Open or create `.claude/settings.local.json`:
+
+**For Windows (PowerShell):**
 
 ```json
 {
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": {
-          "tool": "Write",
-          "path": "**/README.md"
-        },
-        "description": "Remind to audit README",
-        "command": "echo '[AI-Marketer] README updated - run audit (or /ai-marketer:audit) for quality check'"
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": {
-          "prompt": "(?i).*(readme|marketing).*"
-        },
-        "description": "Suggest commands on marketing keywords",
-        "command": "echo '[AI-Marketer] Commands available: audit, score, readme (or /ai-marketer:*)'"
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Write-Output '{\\\"systemMessage\\\": \\\"[AI-Marketer] File written - consider running /ai-marketer:audit\\\"}'\""
+          }
+        ]
       }
     ]
   }
 }
 ```
 
-#### Step 2: Add Your Hook
-
-Add a new object to the appropriate array:
+**For macOS/Linux (Bash):**
 
 ```json
 {
   "hooks": {
     "PostToolUse": [
-      // ... existing hooks ...
       {
-        "matcher": {
-          "tool": "Write",
-          "path": "**/*email*.md"
-        },
-        "description": "Remind to check email copy",
-        "command": "echo '[AI-Marketer] Email content created - score subject lines with score (or /ai-marketer:score)'"
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"[AI-Marketer] File written - consider running /ai-marketer:audit\"}'"
+          }
+        ]
       }
     ]
   }
 }
 ```
 
-#### Step 3: Understand Matchers
+#### Step 2: Understand Hook Format
 
-**PostToolUse matchers**:
+**Hook structure**:
 ```json
 {
-  "tool": "Write",           // Tool name: Write, Read, etc.
-  "path": "**/pattern.md"    // Glob pattern for file path
+  "matcher": "Write",        // Tool name: Write, Edit, Read, etc.
+                             // Can use regex: "Write|Edit"
+                             // Or wildcard: "*" for all tools
+  "hooks": [
+    {
+      "type": "command",     // "command" for shell, "prompt" for LLM
+      "command": "...",      // Shell command to run
+      "timeout": 60          // Optional timeout in seconds
+    }
+  ]
 }
 ```
 
-**UserPromptSubmit matchers**:
-```json
-{
-  "prompt": "(?i)regex.*"    // Regex pattern for user input
-                             // (?i) = case insensitive
-}
+**Available hook events**:
+- `PostToolUse` — After any tool completes
+- `PreToolUse` — Before a tool runs
+- `Notification` — On notifications
+- `Stop` — When session ends
+
+#### Step 3: Make Notifications Visible
+
+**Critical**: Output JSON with `{"systemMessage": "..."}` to show clean notifications:
+
 ```
+PostToolUse:Write says: [AI-Marketer] File written - consider running /ai-marketer:audit
+```
+
+Without `systemMessage`, hook output depends on exit code:
+| Exit Code | Behavior |
+|-----------|----------|
+| 0 + stdout | Only shown in transcript mode (Ctrl+O) — hidden by default |
+| 0 + JSON `systemMessage` | Shows as "says:" notification (recommended) |
+| 1 | Shows as "hook error" |
+| 2 | Shows as "blocking error" |
+
+#### Step 4: Activate Your Hook
+
+1. Save the settings file
+2. Restart Claude Code (`/exit` then `claude`)
+3. Run `/hooks` to verify your hook is registered
+4. Test by triggering the matched tool (e.g., write a file)
 
 ### Hook Limitations
 
 Hooks can only run shell commands. Keep them simple:
-- Echo reminders/suggestions
+- Output `systemMessage` JSON for user notifications
 - No complex logic
 - No direct Claude interaction
 
@@ -1009,29 +1032,24 @@ If you're still [situation], here's what I'd do:
 ```
 ```
 
-### Step 5: Add the Hook
+### Step 5: Add the Hook (Optional)
 
-**File**: `hooks/hooks.json` (add to existing)
+**File**: `.claude/settings.local.json`
+
+Hooks are configured in the settings file, not the plugin. Add to your project's settings:
 
 ```json
 {
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": {
-          "tool": "Write",
-          "path": "**/README.md"
-        },
-        "description": "Remind to audit README",
-        "command": "echo '[AI-Marketer] README updated - run audit (or /ai-marketer:audit) for quality check'"
-      },
-      {
-        "matcher": {
-          "tool": "Write",
-          "path": "**/*email*.md"
-        },
-        "description": "Remind to score email subject lines",
-        "command": "echo '[AI-Marketer] Email content created. Run score (or /ai-marketer:score) on subject lines for optimization.'"
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo [AI-Marketer] File written - run /ai-marketer:audit or /ai-marketer:score"
+          }
+        ]
       }
     ]
   }

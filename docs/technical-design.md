@@ -301,10 +301,9 @@ Build a single Claude Code plugin called `ai-marketer` that implements the 5 mar
 │   ├── generate.md                # generate - Create marketing content
 │   ├── score.md                   # score (or /ai-marketer:score) - Score copy against frameworks
 │   └── compete.md                 # compete (or /ai-marketer:compete) - Analyze competitors
-│
-└── hooks/
-    └── hooks.json                 # Post-generation review hooks
 ```
+
+**Note**: Hooks are configured in `.claude/settings.local.json`, not in the plugin directory.
 
 ---
 
@@ -466,18 +465,70 @@ Commands can be invoked via natural language (e.g., `audit url`) or namespaced s
 
 ### PostToolUse Hook: Auto-Review
 
-After any Write operation in marketing content files, automatically trigger the Content Reviewer agent to score the output.
+After any Write operation, automatically remind to review content.
+
+**Important**: Hooks are configured in `.claude/settings.local.json` or `.claude/settings.json`, not in the plugin.
+
+**For Windows (PowerShell):**
 
 ```json
 {
   "hooks": {
-    "PostToolUse": [{
-      "matcher": "Write",
-      "command": "echo 'Content written - review recommended'"
-    }]
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Write-Output '{\\\"systemMessage\\\": \\\"[AI-Marketer] File written - consider running /ai-marketer:audit\\\"}'\""
+          }
+        ]
+      }
+    ]
   }
 }
 ```
+
+**For macOS/Linux (Bash):**
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"[AI-Marketer] File written - consider running /ai-marketer:audit\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Hook Format**:
+- `matcher`: String matching tool names (e.g., `"Write"`, `"Write|Edit"`)
+- `hooks`: Array of hook objects
+- `type`: Either `"command"` (shell) or `"prompt"` (LLM-based)
+- `command`: The shell command to execute
+
+**Making Notifications Visible**:
+
+Output JSON with `{"systemMessage": "..."}` to show clean notifications:
+```
+PostToolUse:Write says: [AI-Marketer] File written - consider running /ai-marketer:audit
+```
+
+Without `systemMessage`, hook output behavior depends on exit code:
+| Exit Code | Behavior |
+|-----------|----------|
+| 0 + stdout | Only shown in transcript mode (Ctrl+O) |
+| 0 + JSON `systemMessage` | Shows as "says:" notification (recommended) |
+| 1 | Shows as "hook error" |
+| 2 | Shows as "blocking error" |
 
 ---
 
